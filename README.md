@@ -1,4 +1,5 @@
 # GIDMainGame
 
-Replica of GIDGame
-Further updates will happen here.
+Replica of GIDGame:
+
+Any Further updates will happen here.
