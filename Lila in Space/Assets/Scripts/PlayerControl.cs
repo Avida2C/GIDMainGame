@@ -4,14 +4,17 @@ using System.Collections.Generic;
 using Unity.IO.LowLevel.Unsafe;
 using Unity.Jobs.LowLevel.Unsafe;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerControl : MonoBehaviour
 {
     //Player Movement
-    [SerializeField] private float maxSpeed = 7;
+    [SerializeField] 
+    private float maxSpeed = 7;
 
     private Vector2 targetVelocity;
-    private Rigidbody2D player;
+    private Rigidbody2D body;
+    private Health health;
 
     private Vector2 move;
     
@@ -23,16 +26,27 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private GameObject projectile;
 
+    [SerializeField]
+    private float invulnerableTime = 2f;
+
+    //private Text healthText;
+
+    private SpriteRenderer sprite;
+
+    private bool invulnerable;
+
     private void Awake()
     {
-        //Player Movement
-        player = GetComponent<Rigidbody2D>();
+        body = GetComponent<Rigidbody2D>();
+        health = GetComponent<Health>();
+        //healthText = GameObject.Find("HealthText").GetComponent<Text>();
+        sprite = GetComponent<SpriteRenderer>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        //healthText.text = health.currentHealth.ToString();
     }
 
     // Update is called once per frame
@@ -73,7 +87,7 @@ public class PlayerControl : MonoBehaviour
     {
         //Player Movement
         var deltaPosition = targetVelocity * Time.deltaTime;
-        player.position = player.position + deltaPosition * move.magnitude;
+        body.position = body.position + deltaPosition * move.magnitude;
     }
     
     //Screen Boundary
@@ -97,12 +111,43 @@ public class PlayerControl : MonoBehaviour
         }
     }
     
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collision.collider.tag == "Enemy")
+        if(collider.tag == "Enemy" && !invulnerable)
         {
-            Destroy(gameObject);
+            health.Decrement();
+           // healthText.text = health.currentHealth.ToString();
+            SetInvulnerable();
+            Invoke("SetVulnerable", invulnerableTime);
+            StartCoroutine("Flasher");
+            if (health.IsDead())
+            {
+                Destroy(gameObject);
+                //healthText.text = "YOU DIED";
+            }
         }
     }
-    
+
+    IEnumerator Flasher()
+    {
+        int loop = ((int)invulnerableTime) * 5;
+        for (int i = 0; i < loop; i++)
+        {
+            sprite.color = new Color(255, 255, 255, 255);
+            yield return new WaitForSeconds(.1f);
+            sprite.color = new Color(255, 0, 101, 255);
+            yield return new WaitForSeconds(.1f);
+        }
+    }
+
+    public void SetInvulnerable()
+    {
+        this.invulnerable = true;
+    }
+
+    public void SetVulnerable()
+    {
+        this.invulnerable = false;
+    }
+
 }

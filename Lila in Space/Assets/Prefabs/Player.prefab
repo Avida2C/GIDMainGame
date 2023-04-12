@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2034578025739343396}
   - component: {fileID: 4885947610401728932}
   - component: {fileID: 235551484998651369}
+  - component: {fileID: -3806601111274988697}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -100,7 +101,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -131,9 +132,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 2499250121225724343}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d35cf60d198e85f4c87b2ea48b1f563e, type: 3}
+  m_Script: {fileID: 11500000, guid: 9dc6c24587700bf4ab69c2f261b056a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   maxSpeed: 7
   projectileSource: {fileID: 0}
-  projectile: {fileID: 0}
+  projectile: {fileID: 2716074592967527331, guid: b77fd3f835efa4a4ebe6a1188f677c6b, type: 3}
+  invulnerableTime: 2
+--- !u!114 &-3806601111274988697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2499250121225724343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fea5b98edd3dab44b9b2b9b4466b3e9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaximumHealth: 3
+  currentHealth: 0

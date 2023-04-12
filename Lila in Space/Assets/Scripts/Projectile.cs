@@ -33,4 +33,9 @@ public class Projectile : MonoBehaviour
     {
         Destroy(gameObject);
     }
+
+    void OnTriggerEnter2D(Collider2D collider)
+    {
+        Destroy(gameObject);
+    }
 }
