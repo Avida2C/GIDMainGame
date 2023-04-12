@@ -38,7 +38,7 @@ public class EnemyBase : MonoBehaviour
 
     public virtual void OnTriggerEnter2D(Collider2D collider)
     {
-        if (collider.tag == "Projectile")
+        if (collider.tag == "Projectile" && this.health != null)
         {
             this.health.Decrement();
             if (this.health.IsDead())

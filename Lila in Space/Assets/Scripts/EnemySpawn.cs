@@ -11,7 +11,7 @@ public class EnemySpawn : MonoBehaviour
 
     private float boundsLowX = -9f;
     private float boundsHighX = 9f;
-    private float boundsLowY = -2f;
+    private float boundsLowY = -0.5f;
     private float boundsHighY = 5f;
 
     public GameObject EnemyRand;
@@ -19,10 +19,13 @@ public class EnemySpawn : MonoBehaviour
     public GameObject EnemyLine;
 
     public GameObject EnemyFollow;
+
+    private GameObject player;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        player = GameObject.Find("Player");
     }
 
     // Update is called once per frame
@@ -33,7 +36,7 @@ public class EnemySpawn : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length < 10)
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length < 10 && player != null)
         {
             elapsedTime += Time.deltaTime;
             if (elapsedTime > respawnTime)
@@ -42,8 +45,11 @@ public class EnemySpawn : MonoBehaviour
                 float x = Random.Range(boundsLowX, boundsHighX);
                 float y = Random.Range(boundsLowY, boundsHighY);
                 int rngRand = Random.Range(1, 11);
-                if(rngRand == 5)
+                if (rngRand == 5)
+                {
                     Instantiate(EnemyRand, new Vector2(x, y), Quaternion.identity);
+                    return;
+                }
                 rngRand = Random.Range(1, 6);
                 if(rngRand == 3)
                     Instantiate(EnemyFollow, new Vector2(x, y), Quaternion.identity);

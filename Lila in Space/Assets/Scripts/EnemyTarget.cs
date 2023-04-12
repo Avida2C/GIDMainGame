@@ -16,7 +16,7 @@ public class EnemyTarget : EnemyBase
     // Update is called once per frame
     void Update()
     {
-        if(transform != null)
+        if(transform != null && player != null)
             transform.position = Vector2.MoveTowards(transform.position, player.position, enemyVelocity * Time.deltaTime);
     }
 

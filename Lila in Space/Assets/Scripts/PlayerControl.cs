@@ -113,13 +113,17 @@ public class PlayerControl : MonoBehaviour
     
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if(collider.tag == "Enemy" && !invulnerable)
+        if((collider.tag == "Enemy" || collider.tag == "EnemyProjectile") && !invulnerable)
         {
             health.Decrement();
            // healthText.text = health.currentHealth.ToString();
             SetInvulnerable();
             Invoke("SetVulnerable", invulnerableTime);
             StartCoroutine("Flasher");
+            if(health.currentHealth == 1)
+            {
+                sprite.color = new Color(255, 0, 0, 255);
+            }
             if (health.IsDead())
             {
                 Destroy(gameObject);
@@ -133,11 +137,10 @@ public class PlayerControl : MonoBehaviour
         int loop = ((int)invulnerableTime) * 5;
         for (int i = 0; i < loop; i++)
         {
-            sprite.color = new Color(255, 255, 255, 255);
-            yield return new WaitForSeconds(.1f);
             sprite.color = new Color(255, 0, 101, 255);
             yield return new WaitForSeconds(.1f);
             sprite.color = new Color(255, 255, 255, 255);
+            yield return new WaitForSeconds(.1f);
         }
     }
 

@@ -33,7 +33,7 @@ public class EnemyProjectile : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(!collider.gameObject.tag.Contains("Enemy"))
+        if(!collider.gameObject.tag.Contains("Enemy") && !collider.gameObject.tag.Contains("Projectile"))
             Destroy(gameObject);
     }
 
