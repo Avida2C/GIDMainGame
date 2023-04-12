@@ -143,12 +143,24 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7339591237824675490, guid: 30658b7c5fafa3543b7b08edf7c61c72, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.4521258
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339591237824675490, guid: 30658b7c5fafa3543b7b08edf7c61c72, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.4521258
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339591237824675490, guid: 30658b7c5fafa3543b7b08edf7c61c72, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.4521258
+      objectReference: {fileID: 0}
+    - target: {fileID: 7339591237824675490, guid: 30658b7c5fafa3543b7b08edf7c61c72, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -0.38868576
+      value: 0.03
       objectReference: {fileID: 0}
     - target: {fileID: 7339591237824675490, guid: 30658b7c5fafa3543b7b08edf7c61c72, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -3.2590983
+      value: -4.11
       objectReference: {fileID: 0}
     - target: {fileID: 7339591237824675490, guid: 30658b7c5fafa3543b7b08edf7c61c72, type: 3}
       propertyPath: m_LocalPosition.z
@@ -325,7 +337,6 @@ GameObject:
   m_Component:
   - component: {fileID: 519420032}
   - component: {fileID: 519420031}
-  - component: {fileID: 519420029}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -333,14 +344,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!81 &519420029
-AudioListener:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 519420028}
-  m_Enabled: 1
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -1042,6 +1045,7 @@ GameObject:
   - component: {fileID: 1571406320}
   - component: {fileID: 1571406319}
   - component: {fileID: 1571406322}
+  - component: {fileID: 1571406323}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -1101,9 +1105,9 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 64c7105dc5b01c54184e4d4d28ed48d4, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 5e1ad7a64c2c5514e9d1b167be32221c, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.3
   m_Pitch: 1
   Loop: 1
   Mute: 0
@@ -1187,6 +1191,14 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!81 &1571406323
+AudioListener:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1571406318}
+  m_Enabled: 1
 --- !u!1 &1702750700 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3944343452828040074, guid: c3b9b30300fd7cc40a1414e0a7c97ca7, type: 3}
