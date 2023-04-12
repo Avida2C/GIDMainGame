@@ -137,6 +137,7 @@ public class PlayerControl : MonoBehaviour
             yield return new WaitForSeconds(.1f);
             sprite.color = new Color(255, 0, 101, 255);
             yield return new WaitForSeconds(.1f);
+            sprite.color = new Color(255, 255, 255, 255);
         }
     }
 
