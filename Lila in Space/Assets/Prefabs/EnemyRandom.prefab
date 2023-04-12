@@ -147,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaximumHealth: 1
   currentHealth: 0
+  healthUI: {fileID: 0}
 --- !u!114 &2704510059454358767
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -162,6 +163,10 @@ MonoBehaviour:
   enemyVelocity: 2
   enemyUpgradeTime: 5
   maximumHealth: 5
+  powerupInvincible: {fileID: 2861524977764716267, guid: 547f557b16bcfee40be4adf07bb492be, type: 3}
+  powerUpShoot: {fileID: 5497919598146098838, guid: ee3a29a189e53434db9e453157fdb8b2, type: 3}
+  powerupNuke: {fileID: 5853354937590664751, guid: 774ee8b9c44c0aa49be3da91e97d1ee6, type: 3}
+  powerupHealth: {fileID: 1920988923467696990, guid: 0e9e708f4b8eb56489bb28464c7a1c55, type: 3}
   health: {fileID: 0}
   boundsLowX: -8.8
   boundsHighX: 8.8

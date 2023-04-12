@@ -18,9 +18,7 @@ public class Projectile : MonoBehaviour
     void Start()
     {
         _rigidbody = GetComponent<Rigidbody2D>();
-        _rigidbody.AddForce(transform.up * speed, ForceMode2D.Impulse);
         
-        Destroy(gameObject, lifetime);
     }
 
     // Update is called once per frame
@@ -31,11 +29,21 @@ public class Projectile : MonoBehaviour
     
     void OnCollisionEnter2D(Collision2D collision)
     {
-        Destroy(gameObject);
+        if (!collision.collider.gameObject.tag.Contains("Projectile") && !collision.collider.gameObject.tag.Contains("Player"))
+            Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        Destroy(gameObject);
+        if(!collider.gameObject.tag.Contains("Projectile") && !collider.gameObject.tag.Contains("Player"))
+            Destroy(gameObject);
+    }
+
+    public void Shoot()
+    {
+        if (_rigidbody == null)
+            _rigidbody = GetComponent<Rigidbody2D>();
+        _rigidbody.AddForce(transform.up * speed, ForceMode2D.Impulse);
+        Destroy(gameObject, lifetime);
     }
 }

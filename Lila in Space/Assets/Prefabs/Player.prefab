@@ -153,3 +153,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaximumHealth: 3
   currentHealth: 0
+  healthUI: {fileID: 6995216387021783379, guid: 1406cb1a37fe6ba4c883b36c614d694f, type: 3}

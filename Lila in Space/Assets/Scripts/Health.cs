@@ -8,7 +8,11 @@ public class Health : MonoBehaviour
     //Health Parameters
     public int MaximumHealth = 1;
 
+    [HideInInspector]
     public int currentHealth;
+
+    [SerializeField]
+    public GameObject healthUI;
 
 
     // Start is called before the first frame update
@@ -64,5 +68,19 @@ public class Health : MonoBehaviour
     public bool IsDead()
     {
         return this.currentHealth <= 0;
+    }
+
+    public void SetHealthBar()
+    {
+        Canvas c = GameObject.Find("Canvas").GetComponent<Canvas>();
+        for (int i = 0; i < this.currentHealth; i++)
+        {
+            if (GameObject.Find("Health_" + (i + 1)) != null)
+                Destroy(GameObject.Find("Health_" + (i + 1)));
+            int move = 90 * i;
+            GameObject obj = Instantiate(healthUI, c.transform);
+            obj.name = "Health_" + (i + 1);
+            obj.transform.position = new Vector2(obj.transform.position.x + move, obj.transform.position.y);
+        }
     }
 }
