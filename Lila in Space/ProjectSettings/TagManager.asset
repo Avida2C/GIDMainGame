@@ -6,6 +6,11 @@ TagManager:
   tags:
   - Enemy
   - Projectile
+  - PowerUp
+  - EnemyProjectile
+  - InGameMenu
+  - Health
+  - Score
   layers:
   - Default
   - TransparentFX

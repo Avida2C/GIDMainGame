@@ -20,10 +20,12 @@ public class PowerupNuke : PowerupBase
     {
         if (collision.gameObject.tag == "Player")
         {
+            PlayerControl player = GameObject.Find("Player").GetComponent<PlayerControl>();
             var enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (var enemy in enemies)
             {
                 Destroy(enemy);
+                player.AddKill();
             }
             base.OnTriggerEnter2D(collision);
         }

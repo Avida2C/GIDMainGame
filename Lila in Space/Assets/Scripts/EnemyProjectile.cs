@@ -26,14 +26,10 @@ public class EnemyProjectile : MonoBehaviour
 
     }
 
-    void OnCollisionEnter2D(Collision2D collision)
-    {
-        //Destroy(gameObject);
-    }
 
     void OnTriggerEnter2D(Collider2D collider)
     {
-        if(!collider.gameObject.tag.Contains("Enemy") && !collider.gameObject.tag.Contains("Projectile"))
+        if(!collider.gameObject.tag.Contains("Enemy") && !collider.gameObject.tag.Contains("Projectile") && !collider.gameObject.tag.Contains("PowerUp"))
             Destroy(gameObject);
     }
 

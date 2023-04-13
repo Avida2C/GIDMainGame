@@ -70,17 +70,5 @@ public class Health : MonoBehaviour
         return this.currentHealth <= 0;
     }
 
-    public void SetHealthBar()
-    {
-        Canvas c = GameObject.Find("Canvas").GetComponent<Canvas>();
-        for (int i = 0; i < this.currentHealth; i++)
-        {
-            if (GameObject.Find("Health_" + (i + 1)) != null)
-                Destroy(GameObject.Find("Health_" + (i + 1)));
-            int move = 2 * i;
-            GameObject obj = Instantiate(healthUI, c.transform);
-            obj.name = "Health_" + (i + 1);
-            obj.transform.position = new Vector2(obj.transform.position.x + move, obj.transform.position.y);
-        }
-    }
+   
 }

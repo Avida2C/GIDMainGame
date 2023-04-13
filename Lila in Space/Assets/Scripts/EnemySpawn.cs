@@ -12,7 +12,7 @@ public class EnemySpawn : MonoBehaviour
     private float boundsLowX = -9f;
     private float boundsHighX = 9f;
     private float boundsLowY = -2f;
-    private float boundsHighY = 5f;
+    private float boundsHighY = 4.2f;
 
     public GameObject EnemyRand;
 

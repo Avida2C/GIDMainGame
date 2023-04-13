@@ -31,16 +31,20 @@ public class EnemyBase : MonoBehaviour
     public float boundsLowX = -8.8f;
     public float boundsHighX = 8.8f;
     public float boundsLowY = -2.0f;
-    public float boundsHighY = 4.8f;
+    public float boundsHighY = 4.0f;
 
     [HideInInspector]
     public SpriteRenderer sprite;
+
+    [HideInInspector]
+    public PlayerControl player;
 
     // Start is called before the first frame update
     public void Start()
     {
         sprite = GetComponent<SpriteRenderer>();
         health = GetComponent<Health>();
+        player = GameObject.Find("Player").GetComponent<PlayerControl>();
         health.MaximumHealth = 1;
     }
 
@@ -66,9 +70,14 @@ public class EnemyBase : MonoBehaviour
                     Instantiate(powerUpShoot, transform.position, Quaternion.identity);
                 else if (random == 4)
                     Instantiate(powerupHealth, transform.position, Quaternion.identity);
+                player.AddKill();
                 Destroy(gameObject);
             }
 
+        }
+        else if(collider.tag == "Player")
+            {
+            Destroy(gameObject);
         }
     }
 

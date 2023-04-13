@@ -29,6 +29,12 @@ public class PlayerControl : MonoBehaviour
     [SerializeField]
     private float invulnerableTime = 2f;
 
+    [SerializeField]
+    private int healthPowerupPoints = 20;
+
+    [SerializeField]
+    private int killPoints = 5;
+
     private SpriteRenderer sprite;
 
     private bool invulnerable;
@@ -37,19 +43,25 @@ public class PlayerControl : MonoBehaviour
 
     private List<PowerupBase> powerups;
 
+    private TMPro.TMP_Text scoreAmount;
+
+    [HideInInspector]
+    public long points = 0;
+
     private void Awake()
     {
         body = GetComponent<Rigidbody2D>();
         health = GetComponent<Health>();
         sprite = GetComponent<SpriteRenderer>();
         powerups = new List<PowerupBase>();
+        scoreAmount = GameObject.FindGameObjectWithTag("Score").GetComponent<TMPro.TMP_Text>();
         
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        health.SetHealthBar();
+    
     }
 
     // Update is called once per frame
@@ -69,6 +81,10 @@ public class PlayerControl : MonoBehaviour
         {
             sprite.material.SetColor("_Color", HSBColor.ToColor(new HSBColor(Mathf.PingPong(Time.time * 2, 1), 1, 1)));
         }
+
+        scoreAmount.text = points.ToString();
+
+       
     }
 
     void fire()
@@ -146,15 +162,17 @@ public class PlayerControl : MonoBehaviour
     {
         if((collider.tag == "Enemy" || collider.tag == "EnemyProjectile") && !invulnerable && !invincible)
         {
-            Destroy(GameObject.Find("Health_" + this.health.currentHealth));
+            GameObject.Find("Health_" + this.health.currentHealth).GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
             health.Decrement();
             SetInvulnerable();
             Invoke("SetVulnerable", invulnerableTime);
             StartCoroutine("Flasher");
+            powerups.Clear();
             
-            
+
             if (health.IsDead())
             {
+                SaveHighScores();
                 Destroy(gameObject);
             }
         }
@@ -179,10 +197,6 @@ public class PlayerControl : MonoBehaviour
             yield return new WaitForSeconds(.1f);
             sprite.color = new Color(255, 255, 255, 255);
             yield return new WaitForSeconds(.1f);
-            //if (health.currentHealth == 1)
-            //{
-            //    sprite.color = new Color(1.0f, 0f, 0f, 1f);
-            //}
         }
     }
 
@@ -216,10 +230,32 @@ public class PlayerControl : MonoBehaviour
 
     public void OnHealthPowerUp()
     {
-        if(this.health.currentHealth < 3)
+        if (this.health.currentHealth < 3)
         {
             this.health.Increment();
-            this.health.SetHealthBar();
+            GameObject.Find("Health_" + this.health.currentHealth).GetComponent<Image>().color = new Color(1f, 1f, 1f, 1f);
+
         }
+        else
+            points += healthPowerupPoints;
+    }
+
+    public void AddKill()
+    {
+        points += killPoints;
+    }
+
+    private void SaveHighScores()
+    {
+        HighScores highScores;
+        if (!String.IsNullOrEmpty(PlayerPrefs.GetString("HighScores")))
+            highScores = JsonUtility.FromJson<HighScores>(PlayerPrefs.GetString("HighScores"));
+        else
+        {
+            highScores = new HighScores();
+            highScores.HighScoresList = new List<HighScore>();
+        }
+        highScores.HighScoresList.Add(new HighScore("TEST_" + highScores.HighScoresList.Count, points));
+        PlayerPrefs.SetString("HighScores", JsonUtility.ToJson(highScores));
     }
 }

@@ -29,15 +29,11 @@ public class Projectile : MonoBehaviour
     
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (!collision.collider.gameObject.tag.Contains("Projectile") && !collision.collider.gameObject.tag.Contains("Player"))
+        if (!collision.collider.gameObject.tag.Contains("Projectile") && !collision.collider.gameObject.tag.Contains("Player") && !collision.collider.gameObject.tag.Contains("Powerup"))
             Destroy(gameObject);
     }
 
-    void OnTriggerEnter2D(Collider2D collider)
-    {
-        if(!collider.gameObject.tag.Contains("Projectile") && !collider.gameObject.tag.Contains("Player"))
-            Destroy(gameObject);
-    }
+
 
     public void Shoot()
     {
