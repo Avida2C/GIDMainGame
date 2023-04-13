@@ -77,7 +77,7 @@ public class Health : MonoBehaviour
         {
             if (GameObject.Find("Health_" + (i + 1)) != null)
                 Destroy(GameObject.Find("Health_" + (i + 1)));
-            int move = 90 * i;
+            int move = 2 * i;
             GameObject obj = Instantiate(healthUI, c.transform);
             obj.name = "Health_" + (i + 1);
             obj.transform.position = new Vector2(obj.transform.position.x + move, obj.transform.position.y);

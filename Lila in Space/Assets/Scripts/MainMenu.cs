@@ -1,18 +1,45 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+
 public class MainMenu : MonoBehaviour
 {
-    public void PlayGame ()
+
+    public AudioSource audioSource;
+
+    public void PlayGame()
     {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+        StartCoroutine(Delay());
     }
 
-    public void QuitGame ()
+    public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void AudioSource()
+    {
+
+        audioSource.Play();
+    }
+
+    IEnumerator Delay()
+    {
+     
+        yield return new WaitForSeconds(1f);
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
+
+    }
+
+    IEnumerator ChangeDelay()
+    {
+
+        yield return new WaitForSeconds(0.5f);
+        
+
     }
 
 }
