@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PowerupNuke : PowerupBase
 {
+    [Header("Unity Setup")] public ParticleSystem DeathParticleSystem;
+
     private AudioSource audioProperties;
 
     [SerializeField]
@@ -35,6 +37,8 @@ public class PowerupNuke : PowerupBase
                 player.AddKill();
             }
             base.OnTriggerEnter2D(collision);
+
+            Instantiate(DeathParticleSystem, transform.position, Quaternion.identity);
         }
     }
 }

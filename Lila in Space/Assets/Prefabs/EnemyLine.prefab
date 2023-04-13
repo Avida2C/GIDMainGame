@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f6d2de5391d6a6428f2fb84429db278, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DeathParticleSystem: {fileID: 7084647928098512528, guid: 71ef90b6b138ca645a0cbd0e7cd1d663, type: 3}
   enemyVelocity: 2
   enemyUpgradeTime: 0
   maximumHealth: 0

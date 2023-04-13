@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
+    [Header("Unity Setup")] public ParticleSystem DeathParticleSystem;
+
     [SerializeField]
     public float enemyVelocity = 2f;
 
@@ -71,7 +73,7 @@ public class EnemyBase : MonoBehaviour
                 audioProperties.PlayOneShot(Dead);
                 this.Drops();
                 player.AddKill();
-
+                Instantiate(DeathParticleSystem, transform.position, Quaternion.identity);
                 Destroy(gameObject);
                 
             }

@@ -3,7 +3,17 @@ guid: b9a233adb9acd2d49ad7365fbafab1f2
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - DeathParticleSystem: {fileID: 7084647928098512528, guid: 71ef90b6b138ca645a0cbd0e7cd1d663, type: 3}
+  - powerupInvincible: {instanceID: 0}
+  - powerUpShoot: {instanceID: 0}
+  - powerupNuke: {instanceID: 0}
+  - powerupHealth: {instanceID: 0}
+  - audioProperties: {instanceID: 0}
+  - Dead: {instanceID: 0}
+  - health: {instanceID: 0}
+  - sprite: {instanceID: 0}
+  - player: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
