@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: fbeb1db1679927545b5f444ed058b9e3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -139,6 +139,13 @@ MonoBehaviour:
   projectileSource: {fileID: 0}
   projectile: {fileID: 2716074592967527331, guid: b77fd3f835efa4a4ebe6a1188f677c6b, type: 3}
   invulnerableTime: 2
+  healthPowerupPoints: 20
+  killPoints: 5
+  points: 0
+  Hit: {fileID: 8300000, guid: 0886370750fd26a4ab6ab938be5b57e3, type: 3}
+  Shoot: {fileID: 8300000, guid: 7783a7ec618ff144eb2fb0ec7d3ce6b3, type: 3}
+  Dead: {fileID: 8300000, guid: b0eaf0366de26154483a880a2402b785, type: 3}
+  PickUp: {fileID: 8300000, guid: 4a45cce98e762944998a0745e0bef8dc, type: 3}
 --- !u!114 &-3806601111274988697
 MonoBehaviour:
   m_ObjectHideFlags: 0

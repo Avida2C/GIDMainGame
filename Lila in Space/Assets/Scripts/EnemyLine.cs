@@ -11,6 +11,9 @@ public class EnemyLine : EnemyBase
     private GameObject projectile;
 
     [SerializeField]
+    private AudioClip Shooting;
+
+    [SerializeField]
     private float shootTime = 1f;
 
     private float timeElapsedShootTime = 0f;
@@ -62,13 +65,8 @@ public class EnemyLine : EnemyBase
 
     void Shoot()
     {
-        //EnemyProjectile projectile1 = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<EnemyProjectile>();
-        //EnemyProjectile projectile2 = Instantiate(projectile, transform.position, Quaternion.Euler(0, 0, 90)).GetComponent<EnemyProjectile>();
-        //EnemyProjectile projectile3 = Instantiate(projectile, transform.position, Quaternion.Euler(0, 0, 90)).GetComponent<EnemyProjectile>();
+        audioProperties.PlayOneShot(Shooting);
         EnemyProjectile projectile4 = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<EnemyProjectile>();
-        //projectile1.Shoot(Vector2.up);
-        //projectile2.Shoot(Vector2.left);
-        //projectile3.Shoot(Vector2.right);
         projectile4.Shoot(Vector2.down);
     }
 }

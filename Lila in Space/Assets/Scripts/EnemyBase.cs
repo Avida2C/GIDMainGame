@@ -26,6 +26,12 @@ public class EnemyBase : MonoBehaviour
     private GameObject powerupHealth;
 
     [HideInInspector]
+    public AudioSource audioProperties; 
+
+    [SerializeField]
+    private AudioClip Dead;
+
+    [HideInInspector]
     public Health health;
 
     public float boundsLowX = -8.8f;
@@ -42,6 +48,7 @@ public class EnemyBase : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+        audioProperties = GameObject.FindWithTag("audioSource").GetComponent<AudioSource>();
         sprite = GetComponent<SpriteRenderer>();
         health = GetComponent<Health>();
         player = GameObject.Find("Player").GetComponent<PlayerControl>();
@@ -61,17 +68,12 @@ public class EnemyBase : MonoBehaviour
             this.health.Decrement();
             if (this.health.IsDead())
             {
-                int random = Random.Range(1, 5);
-                if (random == 1)
-                    Instantiate(powerupNuke, transform.position, Quaternion.identity);
-                else if (random == 2)
-                    Instantiate(powerupInvincible, transform.position, Quaternion.identity);
-                else if (random == 3)
-                    Instantiate(powerUpShoot, transform.position, Quaternion.identity);
-                else if (random == 4)
-                    Instantiate(powerupHealth, transform.position, Quaternion.identity);
+                audioProperties.PlayOneShot(Dead);
+                this.Drops();
                 player.AddKill();
+
                 Destroy(gameObject);
+                
             }
 
         }
@@ -81,6 +83,18 @@ public class EnemyBase : MonoBehaviour
         }
     }
 
+    public void Drops()
+    {
+        int random = Random.Range(1, 5);
+        if (random == 1)
+            Instantiate(powerupNuke, transform.position, Quaternion.identity);
+        else if (random == 2)
+            Instantiate(powerupInvincible, transform.position, Quaternion.identity);
+        else if (random == 3)
+            Instantiate(powerUpShoot, transform.position, Quaternion.identity);
+        else if (random == 4)
+            Instantiate(powerupHealth, transform.position, Quaternion.identity);
+    }
 
     public enum Bounds
     {
@@ -89,4 +103,6 @@ public class EnemyBase : MonoBehaviour
         MinY,
         MaxY
     }
+
+
 }

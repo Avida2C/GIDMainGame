@@ -46,10 +46,29 @@ public class PlayerControl : MonoBehaviour
     private TMPro.TMP_Text scoreAmount;
 
     [HideInInspector]
-    public long points = 0;
+    public int points = 0;
+
+    //Audio
+    private AudioSource audioProperties;
+
+    [SerializeField]
+    private AudioClip Hit;
+
+    [SerializeField]
+    private AudioClip Shoot;
+
+    [SerializeField]
+    private AudioClip Dead;
+
+    [SerializeField]
+    private AudioClip PickUp;
+
+
+
 
     private void Awake()
     {
+        audioProperties = GameObject.FindWithTag("audioSource").GetComponent<AudioSource>();
         body = GetComponent<Rigidbody2D>();
         health = GetComponent<Health>();
         sprite = GetComponent<SpriteRenderer>();
@@ -61,7 +80,7 @@ public class PlayerControl : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-    
+        
     }
 
     // Update is called once per frame
@@ -90,32 +109,85 @@ public class PlayerControl : MonoBehaviour
     void fire()
     {
         //create a bullet
-        if (powerups.Count > 0)
-        {
-            int shootingPowerups = powerups.FindAll(p => p is PowerupShoot).Count;
+        audioProperties.PlayOneShot(Shoot);
+        int shootingPowerups = powerups.FindAll(p => p is PowerupShoot).Count;
             if (shootingPowerups == 1)
             {
-                var projectile1 = Instantiate(projectile, projectileSource.position, Quaternion.Euler(0, 0, 45)).GetComponent<Projectile>();
-                var projectile2 = Instantiate(projectile, projectileSource.position, Quaternion.Euler(0, 0, 315)).GetComponent<Projectile>();
+                var projectile1 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, 30)).GetComponent<Projectile>();
+                var projectile2 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, -30)).GetComponent<Projectile>();
                 projectile1.Shoot();
                 projectile2.Shoot();
             }
             else if (shootingPowerups == 2)
             {
-                var projectile1 = Instantiate(projectile, projectileSource.position, Quaternion.Euler(0, 0, 45)).GetComponent<Projectile>();
-                var projectile2 = Instantiate(projectile, projectileSource.position, Quaternion.Euler(0, 0, 315)).GetComponent<Projectile>();
-                var projectile3 = Instantiate(projectile, projectileSource.position, Quaternion.Euler(0, 0, 180)).GetComponent<Projectile>();
-                var projectile4 = Instantiate(projectile, projectileSource.position, Quaternion.Euler(0, 0, 135)).GetComponent<Projectile>();
-                var projectile5 = Instantiate(projectile, projectileSource.position, Quaternion.Euler(0, 0, 225)).GetComponent<Projectile>();
+                var projectile1 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, 30)).GetComponent<Projectile>();
+                var projectile2 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, 0)).GetComponent<Projectile>();
+                var projectile3 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, -30)).GetComponent<Projectile>();
+                projectile1.Shoot();
+                projectile2.Shoot();
+                projectile3.Shoot();
+
+            }
+            else if (shootingPowerups == 3)
+            {
+                var projectile1 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, 30)).GetComponent<Projectile>();
+                var projectile2 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, -30)).GetComponent<Projectile>();
+                var projectile3 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, 0)).GetComponent<Projectile>();
+                var projectile4 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, 90)).GetComponent<Projectile>();
+                var projectile5 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, -90)).GetComponent<Projectile>();
                 projectile1.Shoot();
                 projectile2.Shoot();
                 projectile3.Shoot();
                 projectile4.Shoot();
                 projectile5.Shoot();
             }
+            else if (shootingPowerups == 4)
+            {
+                var projectile1 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, 30)).GetComponent<Projectile>();
+                var projectile2 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, -30)).GetComponent<Projectile>();
+                var projectile3 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, 0)).GetComponent<Projectile>();
+                var projectile4 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, 90)).GetComponent<Projectile>();
+                var projectile5 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, -90)).GetComponent<Projectile>();
+                var projectile6 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, -150)).GetComponent<Projectile>();
+                var projectile7 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, 150)).GetComponent<Projectile>();
+                projectile1.Shoot();
+                projectile2.Shoot();
+                projectile3.Shoot();
+                projectile4.Shoot();
+                projectile5.Shoot();
+                projectile6.Shoot();
+                projectile7.Shoot();
+            }
+
+        else if (shootingPowerups >= 5)
+        {
+            var projectile1 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, 30)).GetComponent<Projectile>();
+            var projectile2 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, -30)).GetComponent<Projectile>();
+            var projectile3 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, 0)).GetComponent<Projectile>();
+            var projectile4 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, 90)).GetComponent<Projectile>();
+            var projectile5 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, -90)).GetComponent<Projectile>();
+            var projectile6 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, -150)).GetComponent<Projectile>();
+            var projectile7 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, 150)).GetComponent<Projectile>();
+            var projectile8 = Instantiate(projectile, gameObject.transform.position, Quaternion.Euler(0, 0, 180)).GetComponent<Projectile>();
+            projectile1.Shoot();
+            projectile2.Shoot();
+            projectile3.Shoot();
+            projectile4.Shoot();
+            projectile5.Shoot();
+            projectile6.Shoot();
+            projectile7.Shoot();
+            projectile8.Shoot();
         }
-        var projectileShot = Instantiate(projectile, projectileSource.position, projectileSource.rotation).GetComponent<Projectile>();
-        projectileShot.Shoot();
+
+        else
+            {
+                var projectileShot = Instantiate(projectile, gameObject.transform.position, projectileSource.rotation).GetComponent<Projectile>();
+                projectileShot.Shoot();
+            }
+
+
+        
+
     }
 
     private void OnBecameInvisible()
@@ -172,16 +244,23 @@ public class PlayerControl : MonoBehaviour
 
             if (health.IsDead())
             {
-                SaveHighScores();
+                audioProperties.PlayOneShot(Dead);
                 Destroy(gameObject);
+                SaveHighScores();
+                
+            }
+            else
+            {
+                audioProperties.PlayOneShot(Hit);
             }
         }
         else if(collider.tag == "PowerUp")
         {
+            audioProperties.PlayOneShot(PickUp);
             PowerupBase powerup = collider.gameObject.GetComponent<PowerupBase>();
             if(powerup is PowerupShoot)
             {
-                if(this.powerups.FindAll(p => p is PowerupShoot).Count < 2)
+
                     powerups.Add(powerup);
             }
             
@@ -247,15 +326,10 @@ public class PlayerControl : MonoBehaviour
 
     private void SaveHighScores()
     {
-        HighScores highScores;
-        if (!String.IsNullOrEmpty(PlayerPrefs.GetString("HighScores")))
-            highScores = JsonUtility.FromJson<HighScores>(PlayerPrefs.GetString("HighScores"));
-        else
+        if (points > PlayerPrefs.GetInt("HighScores"))
         {
-            highScores = new HighScores();
-            highScores.HighScoresList = new List<HighScore>();
+            PlayerPrefs.SetInt("HighScores", points);
         }
-        highScores.HighScoresList.Add(new HighScore("TEST_" + highScores.HighScoresList.Count, points));
-        PlayerPrefs.SetString("HighScores", JsonUtility.ToJson(highScores));
     }
+
 }

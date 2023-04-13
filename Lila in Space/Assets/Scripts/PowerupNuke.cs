@@ -4,10 +4,15 @@ using UnityEngine;
 
 public class PowerupNuke : PowerupBase
 {
+    private AudioSource audioProperties;
+
+    [SerializeField]
+    private AudioClip Nuke;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioProperties = GameObject.FindWithTag("audioSource").GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -20,10 +25,12 @@ public class PowerupNuke : PowerupBase
     {
         if (collision.gameObject.tag == "Player")
         {
+            audioProperties.PlayOneShot(Nuke);
             PlayerControl player = GameObject.Find("Player").GetComponent<PlayerControl>();
             var enemies = GameObject.FindGameObjectsWithTag("Enemy");
             foreach (var enemy in enemies)
             {
+                enemy.GetComponent<EnemyBase>().Drops(); 
                 Destroy(enemy);
                 player.AddKill();
             }

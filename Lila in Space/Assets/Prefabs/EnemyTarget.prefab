@@ -74,7 +74,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 5b10382b9e503ca489a887a7ae772d19, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -167,9 +167,12 @@ MonoBehaviour:
   powerUpShoot: {fileID: 5497919598146098838, guid: ee3a29a189e53434db9e453157fdb8b2, type: 3}
   powerupNuke: {fileID: 5853354937590664751, guid: 774ee8b9c44c0aa49be3da91e97d1ee6, type: 3}
   powerupHealth: {fileID: 1920988923467696990, guid: 0e9e708f4b8eb56489bb28464c7a1c55, type: 3}
+  Dead: {fileID: 8300000, guid: 11c1ad03c1182994e8a1a50f0c477234, type: 3}
+  Shoot: {fileID: 0}
   health: {fileID: 0}
   boundsLowX: -8.8
   boundsHighX: 8.8
   boundsLowY: -2
   boundsHighY: 4.8
   sprite: {fileID: 0}
+  player: {fileID: 0}

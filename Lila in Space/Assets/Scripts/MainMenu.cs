@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
 {
 
     public AudioSource audioSource;
+    private TMPro.TMP_Text HScore;
 
     public void PlayGame()
     {
@@ -40,6 +41,13 @@ public class MainMenu : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         
 
+    }
+
+    private void Start()
+    {
+        HScore = GameObject.FindGameObjectWithTag("Score").GetComponent<TMPro.TMP_Text>();
+        int score = PlayerPrefs.GetInt("HighScores");
+        HScore.text = score.ToString();
     }
 
 }

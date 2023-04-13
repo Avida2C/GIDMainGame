@@ -2458,7 +2458,7 @@ GameObject:
   - component: {fileID: 677894425}
   m_Layer: 5
   m_Name: hsnumber_txt
-  m_TagString: Untagged
+  m_TagString: Score
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2479,7 +2479,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 91.14, y: 112}
+  m_AnchoredPosition: {x: 117.13999, y: 112}
   m_SizeDelta: {x: 59.35, y: -41.66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &677894425
@@ -3057,7 +3057,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -179, y: 112}
+  m_AnchoredPosition: {x: -153, y: 112}
   m_SizeDelta: {x: 177.52, y: -41.66}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &832708400
