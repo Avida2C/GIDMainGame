@@ -2603,8 +2603,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   respawnTime: 3
-  speedUpInterval: 60
-  respawnTimeReduction: 0.9
+  speedUpInterval: 30
+  respawnTimeReduction: 0.7
   EnemyRand: {fileID: 7374742049804076880, guid: 7d3ddb3d6b451dd479e805cdbeb2e755, type: 3}
   EnemyLine: {fileID: 2778465434489875362, guid: 997fe747608ce8e4099f62f412fb963b, type: 3}
   EnemyFollow: {fileID: 1339943449895874272, guid: 2d5e782992dedf648b8bc0a1ba586a0b, type: 3}

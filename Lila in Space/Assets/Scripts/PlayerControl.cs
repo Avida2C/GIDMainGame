@@ -260,7 +260,7 @@ public class PlayerControl : MonoBehaviour
             PowerupBase powerup = collider.gameObject.GetComponent<PowerupBase>();
             if (powerup is PowerupShoot)
             {
-                if (this.powerups.Count > 5)
+                if (this.powerups.Count >= 5)
                 {
                     points += healthPowerupPoints;
                 }
