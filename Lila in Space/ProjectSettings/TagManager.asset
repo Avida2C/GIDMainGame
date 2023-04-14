@@ -12,6 +12,7 @@ TagManager:
   - Health
   - Score
   - audioSource
+  - GameOver
   layers:
   - Default
   - TransparentFX

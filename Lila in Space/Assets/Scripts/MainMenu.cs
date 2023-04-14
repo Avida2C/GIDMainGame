@@ -50,4 +50,13 @@ public class MainMenu : MonoBehaviour
         HScore.text = score.ToString();
     }
 
+    public void returnMainMenu()
+    {
+        SceneManager.LoadScene("menu");
+    }
+
+    public void refreshScene()
+    {
+        SceneManager.LoadScene("game");
+    }
 }
