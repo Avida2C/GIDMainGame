@@ -7,7 +7,7 @@ public class EnemyBase : MonoBehaviour
     [Header("Unity Setup")] public ParticleSystem DeathParticleSystem;
 
     [SerializeField]
-    public float enemyVelocity = 2f;
+    public float enemyVelocity = 1f;
 
     [SerializeField]
     public float enemyUpgradeTime;
@@ -34,6 +34,9 @@ public class EnemyBase : MonoBehaviour
     private AudioClip Dead;
 
     [HideInInspector]
+    public GameController gameController;
+
+    [HideInInspector]
     public Health health;
 
     public float boundsLowX = -8.8f;
@@ -54,7 +57,9 @@ public class EnemyBase : MonoBehaviour
         sprite = GetComponent<SpriteRenderer>();
         health = GetComponent<Health>();
         player = GameObject.Find("Player").GetComponent<PlayerControl>();
+        gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         health.MaximumHealth = 1;
+        enemyVelocity += gameController.speedMultiplier;
     }
 
     // Update is called once per frame
@@ -87,15 +92,30 @@ public class EnemyBase : MonoBehaviour
 
     public void Drops()
     {
-        int random = Random.Range(1, 5);
-        if (random == 1)
+        int random = Random.Range(1, 20);
+        if (random == 4)
+        {
             Instantiate(powerupNuke, transform.position, Quaternion.identity);
-        else if (random == 2)
+            return;
+        }
+        random = Random.Range(1, 15);
+        if (random == 2)
+        {
             Instantiate(powerupInvincible, transform.position, Quaternion.identity);
-        else if (random == 3)
+            return;
+        }
+        random = Random.Range(1, 5);
+        if (random == 3)
+        {
             Instantiate(powerUpShoot, transform.position, Quaternion.identity);
-        else if (random == 4)
+            return;
+        }
+        random = Random.Range(1, 11);
+        if (random == 2)
+        {
             Instantiate(powerupHealth, transform.position, Quaternion.identity);
+            return;
+        }
     }
 
     public enum Bounds

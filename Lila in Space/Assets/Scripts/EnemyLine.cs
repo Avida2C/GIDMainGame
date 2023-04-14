@@ -14,7 +14,7 @@ public class EnemyLine : EnemyBase
     private AudioClip Shooting;
 
     [SerializeField]
-    private float shootTime = 1f;
+    public float shootTime = 1f;
 
     private float timeElapsedShootTime = 0f;
 
@@ -22,6 +22,7 @@ public class EnemyLine : EnemyBase
     new void Start()
     {
         base.Start();
+        shootTime  *= (1f - (gameController.speedMultiplier * 0.1f));
         calcuateNewMovementVector(Bounds.MaxX);
     }
 

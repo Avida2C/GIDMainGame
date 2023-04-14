@@ -162,7 +162,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   DeathParticleSystem: {fileID: 7084647928098512528, guid: 71ef90b6b138ca645a0cbd0e7cd1d663, type: 3}
   enemyVelocity: 2
-  enemyUpgradeTime: 5
+  enemyUpgradeTime: 10
   maximumHealth: 5
   powerupInvincible: {fileID: 2861524977764716267, guid: 547f557b16bcfee40be4adf07bb492be, type: 3}
   powerUpShoot: {fileID: 5497919598146098838, guid: ee3a29a189e53434db9e453157fdb8b2, type: 3}
@@ -170,6 +170,7 @@ MonoBehaviour:
   powerupHealth: {fileID: 1920988923467696990, guid: 0e9e708f4b8eb56489bb28464c7a1c55, type: 3}
   audioProperties: {fileID: 0}
   Dead: {fileID: 8300000, guid: 11c1ad03c1182994e8a1a50f0c477234, type: 3}
+  gameController: {fileID: 0}
   health: {fileID: 0}
   boundsLowX: -8.8
   boundsHighX: 8.8

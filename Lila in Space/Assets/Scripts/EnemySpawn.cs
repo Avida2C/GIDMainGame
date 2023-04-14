@@ -9,6 +9,14 @@ public class EnemySpawn : MonoBehaviour
     [SerializeField]
     private float respawnTime;
 
+    [SerializeField]
+    private float speedUpInterval;
+
+    [SerializeField]
+    private float respawnTimeReduction;
+
+    private float speedUpIntervalElapsed;
+
     private float boundsLowX = -9f;
     private float boundsHighX = 9f;
     private float boundsLowY = -2f;
@@ -57,5 +65,13 @@ public class EnemySpawn : MonoBehaviour
                     Instantiate(EnemyLine, new Vector2(x, y), Quaternion.identity);
             }
         }
+
+        if(speedUpIntervalElapsed > speedUpInterval)
+        {
+            respawnTime *= respawnTimeReduction;
+            speedUpIntervalElapsed = 0;
+        }
+
+        speedUpIntervalElapsed += Time.deltaTime;
     }
 }

@@ -229,10 +229,10 @@ public class PlayerControl : MonoBehaviour
             transform.position = newPosition;
         }
     }
-    
+
     private void OnTriggerEnter2D(Collider2D collider)
     {
-        if((collider.tag == "Enemy" || collider.tag == "EnemyProjectile") && !invulnerable && !invincible)
+        if ((collider.tag == "Enemy" || collider.tag == "EnemyProjectile") && !invulnerable && !invincible)
         {
             GameObject.Find("Health_" + this.health.currentHealth).GetComponent<Image>().color = new Color(1f, 1f, 1f, 0f);
             health.Decrement();
@@ -240,30 +240,36 @@ public class PlayerControl : MonoBehaviour
             Invoke("SetVulnerable", invulnerableTime);
             StartCoroutine("Flasher");
             powerups.Clear();
-            
+
 
             if (health.IsDead())
             {
                 audioProperties.PlayOneShot(Dead);
-                Destroy(gameObject);
                 SaveHighScores();
-                
+                GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().ShowGameOver(points.ToString());
+                Destroy(gameObject);
             }
             else
             {
                 audioProperties.PlayOneShot(Hit);
             }
         }
-        else if(collider.tag == "PowerUp")
+        else if (collider.tag == "PowerUp")
         {
             audioProperties.PlayOneShot(PickUp);
             PowerupBase powerup = collider.gameObject.GetComponent<PowerupBase>();
-            if(powerup is PowerupShoot)
+            if (powerup is PowerupShoot)
             {
-
+                if (this.powerups.Count > 5)
+                {
+                    points += healthPowerupPoints;
+                }
+                else
+                {
                     powerups.Add(powerup);
+                }
             }
-            
+
         }
     }
 
