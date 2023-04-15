@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PowerupInvincible : PowerupBase
 {
+    //Variable to input the amount of time the powerup is active
     [SerializeField]
     private float powerupTime;
 
@@ -21,8 +22,10 @@ public class PowerupInvincible : PowerupBase
 
     new private void OnTriggerEnter2D(Collider2D collision)
     {
+        //if gameobject with the tag "Player" collides with this gameObject
         if (collision.gameObject.tag == "Player")
         {
+            //Call the method SetInvincible from PlayerControl component/script
             PlayerControl player = collision.gameObject.GetComponent<PlayerControl>();
             player.SetInvincible(powerupTime);
             base.OnTriggerEnter2D(collision);

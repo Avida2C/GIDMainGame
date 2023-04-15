@@ -1,5 +1,7 @@
 using System;
 using UnityEngine;
+//This script is for the conversion of colours
+//Found on: https://gist.github.com/grimmdev/7e0cf5dc8701fbd728b4
 
 [Serializable]
 public struct HSBColor

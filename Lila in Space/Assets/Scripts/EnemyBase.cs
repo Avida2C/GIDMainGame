@@ -44,6 +44,8 @@ public class EnemyBase : MonoBehaviour
     public float boundsLowY = -2.0f;
     public float boundsHighY = 4.0f;
 
+    private BoxCollider2D colliderOnSpawn;
+
     [HideInInspector]
     public SpriteRenderer sprite;
 
@@ -60,6 +62,10 @@ public class EnemyBase : MonoBehaviour
         gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
         health.MaximumHealth = 1;
         enemyVelocity += gameController.speedMultiplier;
+        
+        colliderOnSpawn = GetComponent<BoxCollider2D>();
+        colliderOnSpawn.enabled = false;
+        Invoke("EnableHitBox", 0.5f);
     }
 
     // Update is called once per frame
@@ -124,6 +130,11 @@ public class EnemyBase : MonoBehaviour
         MaxX,
         MinY,
         MaxY
+    }
+
+    public void EnableHitBox()
+    {
+        colliderOnSpawn.enabled = true;
     }
 
 

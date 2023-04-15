@@ -18,8 +18,10 @@ public class PowerupHealth : PowerupBase
 
     new private void OnTriggerEnter2D(Collider2D collision)
     {
+        //if the player collides with GameObject "PowerUpHalth"
         if(collision.gameObject.tag == "Player")
         {
+            //Calls the OnHealthPowerUp method in the PlayerControl Component/script
             collision.gameObject.GetComponent<PlayerControl>().OnHealthPowerUp();
             base.OnTriggerEnter2D(collision);
         }

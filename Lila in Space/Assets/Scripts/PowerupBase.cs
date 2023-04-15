@@ -15,7 +15,10 @@ public class PowerupBase : MonoBehaviour
     {
         
     }
-
+    /// <summary>
+    /// If the object with the tag "Player" collides with the powerup, the powerup gameobject is destroyed
+    /// </summary>
+    /// <param name="collider"></param>
     protected void OnTriggerEnter2D(Collider2D collider)
     {
         if (collider.gameObject.tag == "Player")
