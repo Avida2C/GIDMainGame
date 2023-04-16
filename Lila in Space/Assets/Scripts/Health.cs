@@ -5,19 +5,17 @@ using UnityEngine;
 public class Health : MonoBehaviour
 {
 
-    //Health Parameters
+    //Maximum Health
     public int MaximumHealth = 1;
-
+    //The current health of gameObjects
     [HideInInspector]
     public int currentHealth;
-
-    [SerializeField]
-    public GameObject healthUI;
 
 
     // Start is called before the first frame update
     void Start()
     {
+        //The current health of gameObjects is set to the maximum health
         this.currentHealth = this.MaximumHealth;
     }
 
@@ -28,7 +26,7 @@ public class Health : MonoBehaviour
     }
 
     /// <summary>
-    /// Increment the HP of the entity.
+    /// To increase the HP of the player
     /// </summary>
     public void Increment()
     {
@@ -36,7 +34,7 @@ public class Health : MonoBehaviour
     }
 
     /// <summary>
-    /// Increment the HP of the entity.
+    /// To increase the HP of the enemy
     /// </summary>
     public void IncrementEnemy()
     {
@@ -48,17 +46,11 @@ public class Health : MonoBehaviour
     }
 
     /// <summary>
-    /// Decrement the HP of the entity. Will trigger a HealthIsZero event when
-    /// current HP reaches 0
+    /// Will decrese the HP of the gameobjects
     /// </summary>
     public void Decrement()
     {
         this.currentHealth = Mathf.Clamp(this.currentHealth - 1, 0, this.MaximumHealth);
-        //if (this.currentHealth == 0)
-        //{
-        //    var ev = Schedule<HealthIsZero>();
-        //    ev.health = this;
-        //}
     }
 
     /// <summary>

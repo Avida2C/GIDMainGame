@@ -8,66 +8,77 @@ public class EnemyLine : EnemyBase
     [SerializeField]
     private AudioClip Shooting;
 
-
+    //Emeny Line Movement
     private Vector2 movementDirection;
     private Vector2 movementPerSecond;
 
+    //Enemy Projectile
     [SerializeField]
     private GameObject projectile;
 
-
-
+    //Shooting time/Projectile spawning time
     [SerializeField]
     public float shootTime = 1f;
 
+    //Time since last shot projectile
     private float timeElapsedShootTime = 0f;
 
     // Start is called before the first frame update
     new void Start()
     {
-
+        //Calling the Start Method in EnemyBase
         base.Start();
-
+        //Calculate the shoot time depending on the speedMultiplier
         shootTime  *= (1f - (gameController.speedMultiplier * 0.1f));
-
+        //Start movement
         calcuateNewMovementVector(Bounds.MaxX);
     }
 
     // Update is called once per frame
     void Update()
     {
+        //if the enemy reaches maximum X boundary
         if (transform.position.x >= boundsHighX)
         {
+            //calculate movement from right to left
             calcuateNewMovementVector(Bounds.MaxX);
         }
+        //if the enemy reached the minimum X boundary
         else if (transform.position.x <= boundsLowX)
         {
+            //calculate movement from left to right
             calcuateNewMovementVector(Bounds.MinX);
         }
-            
+        //enemy movement
         transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
         transform.position.y + (movementPerSecond.y * Time.deltaTime));
         
+        //Adds delta time to timeElapsedShootTime
         timeElapsedShootTime += Time.deltaTime;
+
+        //if timeElapsedShootTime is greater than shootTime
         if(timeElapsedShootTime > shootTime)
         {
+            //Shoot Projectile
             this.Shoot();
+            //Reset timeElapsedShootTime
             timeElapsedShootTime = 0;
         }
     }
 
     void calcuateNewMovementVector(Bounds bounds)
     {
-        //create a random direction vector with the magnitude of 1, later multiply it with the velocity of the enemy
+        //if enemy reaches maximum X, set movement direction to left
         if(bounds == Bounds.MaxX)
         {
             movementDirection = Vector2.left;
         }
+        //if enemy reaches minimum X, set movement direction to right
         else
         {
             movementDirection = Vector2.right;
         }
-        
+        //Calculate movement speed
         movementPerSecond = movementDirection * enemyVelocity;
     }
 
@@ -76,7 +87,7 @@ public class EnemyLine : EnemyBase
         //Play the audioclip found in the "Shooting" AudioSource
         audioProperties.PlayOneShot(Shooting);
 
-
+        //Projectile spawn
         EnemyProjectile projectile4 = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<EnemyProjectile>();
         
         projectile4.Shoot(Vector2.down);

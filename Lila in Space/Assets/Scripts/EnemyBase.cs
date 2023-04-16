@@ -4,26 +4,29 @@ using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
 {
+    //Set the particle system
     [Header("Unity Setup")] public ParticleSystem DeathParticleSystem;
-
+    
+    //Enemy speed
     [SerializeField]
     public float enemyVelocity = 1f;
-
+    //Enemy time to upgrade
     [SerializeField]
     public float enemyUpgradeTime;
-
+    //Maximum enemy health
     [SerializeField]
     public int maximumHealth;
-
+    
+    //PowerUp drop for invincibility
     [SerializeField]
     private GameObject powerupInvincible;
-
+    //PowerUp drop for shooting upgrades
     [SerializeField]
     private GameObject powerUpShoot;
-
+    //PowerUp drop for clearing screen from enemy gameobjects
     [SerializeField]
     private GameObject powerupNuke;
-
+    //PowerUp drop for player lives
     [SerializeField]
     private GameObject powerupHealth;
 
@@ -34,23 +37,28 @@ public class EnemyBase : MonoBehaviour
     [SerializeField]
     private AudioClip Dead;
 
-
+    //Component for the GameController
     [HideInInspector]
     public GameController gameController;
 
+    //Enemy Health
     [HideInInspector]
     public Health health;
 
+    //Enemy movement boundaries
     public float boundsLowX = -8.8f;
     public float boundsHighX = 8.8f;
     public float boundsLowY = -2.0f;
     public float boundsHighY = 4.0f;
 
+    //Enemy Collider
     private BoxCollider2D colliderOnSpawn;
 
+    //The sprite of enemy
     [HideInInspector]
     public SpriteRenderer sprite;
 
+    //Player from the PlayerControl script
     [HideInInspector]
     public PlayerControl player;
 
@@ -59,65 +67,94 @@ public class EnemyBase : MonoBehaviour
     {
         //Get the audioSource Component with the tag "audioSource" 
         audioProperties = GameObject.FindWithTag("audioSource").GetComponent<AudioSource>();
-
+       
+        //Sprite Renderer
         sprite = GetComponent<SpriteRenderer>();
+        
+        //Enemy Health 
         health = GetComponent<Health>();
+        
+        //Player GameObject from PlayerControl
         player = GameObject.Find("Player").GetComponent<PlayerControl>();
+        
+        //GameController 
         gameController = GameObject.FindWithTag("GameController").GetComponent<GameController>();
+
+        //Maximum health of the enemy is set to 1
         health.MaximumHealth = 1;
+        //Increases the base enemy speed depending on the speedMultiplier from the gameController
         enemyVelocity += gameController.speedMultiplier;
         
-        
+        //Box collider is disabled
         colliderOnSpawn = GetComponent<BoxCollider2D>();
         colliderOnSpawn.enabled = false;
+        //The box collider is enabled after 0.5 seconds
         Invoke("EnableHitBox", 0.5f);
     }
 
 
     public virtual void OnTriggerEnter2D(Collider2D collider)
     {
+        //if enemy is hit by the player projectile
         if (collider.tag == "Projectile" && this.health != null)
         {
+            //Remove 1 health from the enemy
             this.health.Decrement();
+            //check if the enemy is dead by going to the Method IsDead
             if (this.health.IsDead())
             {
                 //Play the audioclip found in the "Dead" AudioSource
                 audioProperties.PlayOneShot(Dead);
 
+                //Check whether a powerup is dropped
                 this.Drops();
+                
+                //Add score on enemy death
                 player.AddKill();
+                
+                //Particle system effect
                 Instantiate(DeathParticleSystem, transform.position, Quaternion.identity);
+                
+                //Enemy gameObject is Destroyed
                 Destroy(gameObject);
                 
             }
 
         }
         else if(collider.tag == "Player")
-            {
+        {
+            //Enemy is destroyed
             Destroy(gameObject);
         }
     }
-
+    /// <summary>
+    /// Used to determine the powerup drop rates for each powerup type 
+    /// enemy drops the powerup if the number needed is generated
+    /// </summary>
     public void Drops()
     {
+        //5%
         int random = Random.Range(1, 20);
         if (random == 4)
         {
             Instantiate(powerupNuke, transform.position, Quaternion.identity);
             return;
         }
+        //7%
         random = Random.Range(1, 15);
         if (random == 2)
         {
             Instantiate(powerupInvincible, transform.position, Quaternion.identity);
             return;
         }
+        //25%
         random = Random.Range(1, 5);
         if (random == 3)
         {
             Instantiate(powerUpShoot, transform.position, Quaternion.identity);
             return;
         }
+        //10%
         random = Random.Range(1, 11);
         if (random == 2)
         {
@@ -125,7 +162,9 @@ public class EnemyBase : MonoBehaviour
             return;
         }
     }
-
+    /// <summary>
+    /// Used by child components to determine the bounds 
+    /// </summary>
     public enum Bounds
     {
         MinX,
@@ -137,6 +176,7 @@ public class EnemyBase : MonoBehaviour
 
     public void EnableHitBox()
     {
+        //Box collider is enabled
         colliderOnSpawn.enabled = true;
     }
 

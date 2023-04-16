@@ -4,16 +4,18 @@ using UnityEngine;
 
 public class EnemyRandom : EnemyBase
 {
+    //time to change direction
     [SerializeField]
     private readonly float directionChangeTime = 3f;
-
+    //last direction change time
     private float latestDirectionChangeTime;
-    
+    //movement
     private Vector2 movementDirection;
     private Vector2 movementPerSecond;
-    
+    //elapsed time since last upgrade
     private float elapsedTimeUpgrade;
 
+    //colours for enemy leveling up
     private Color level1 = Color.white;
     private Color level2 = Color.green;
     private Color level3 = Color.blue;
@@ -23,13 +25,16 @@ public class EnemyRandom : EnemyBase
     // Start is called before the first frame update
     new void Start()
     {
+        //calls the method Start in the EnemyBase script
         base.Start();
+        //enemy colour set to level 1
         sprite.color = level1;
     }
 
     // Update is called once per frame
     void Update()
-    {        
+    {   
+        //check if enemies reached one of the boundaries
         if (transform.position.x >= boundsHighX)
         {
             calcuateNewMovementVectorBounds(Bounds.MaxX);
@@ -46,24 +51,32 @@ public class EnemyRandom : EnemyBase
         {
             calcuateNewMovementVectorBounds(Bounds.MinY);
         }
+        //if time minus latestDirectionChangeTime is greater than directionChangeTime
         else if (Time.time - latestDirectionChangeTime > directionChangeTime)
         {
-            //sprite.color = new Color(Random.Range(0f, 1f), Random.Range(0f, 1f), Random.Range(0f, 1f));
+            //set latestDirectionChangeTime to current time
             latestDirectionChangeTime = Time.time;
+            //calculate new movement
             calcuateNewMovementVector();
         }
-
+        //Change position and movement
         transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
         transform.position.y + (movementPerSecond.y * Time.deltaTime));
     }
 
     private void FixedUpdate()
     {
+        //add deltaTime to elapsedTimeUpgrade
         elapsedTimeUpgrade += Time.deltaTime;
+
+        //if elapsedTimeUpgrade is greater or equal to enemyUpgradeTime and enemy currentHealth is less than maximumHealth
         if (elapsedTimeUpgrade >= enemyUpgradeTime && this.health.currentHealth < this.maximumHealth)
         {
+            //reset elapsedTimeUpgrade
             elapsedTimeUpgrade = 0;
+            //Add +1
             this.health.IncrementEnemy();
+            //Change colour
             this.SetColor();
         }
     }
@@ -76,6 +89,10 @@ public class EnemyRandom : EnemyBase
         movementPerSecond = movementDirection * enemyVelocity;
     }
 
+    /// <summary>
+    /// if any of the 4 boundaries is hit, calculate new movement vector in the opposite direction
+    /// </summary>
+    /// <param name="bounds"></param>
     void calcuateNewMovementVectorBounds(Bounds bounds)
     {
         switch (bounds)
@@ -102,9 +119,13 @@ public class EnemyRandom : EnemyBase
                 }
 
         }
+        //Calculate movement speed
         movementPerSecond = movementDirection * enemyVelocity;
     }
 
+    /// <summary>
+    /// Set the enemy sprite colour depending on the current health / level
+    /// </summary>
     private void SetColor()
     {
         try
@@ -136,7 +157,9 @@ public class EnemyRandom : EnemyBase
 
     public override void OnTriggerEnter2D(Collider2D collision)
     {
+        //Call method OnTriggerEnter2D from EnemyBase
         base.OnTriggerEnter2D(collision);
+        //Set colour
         this.SetColor();
     }
 }
