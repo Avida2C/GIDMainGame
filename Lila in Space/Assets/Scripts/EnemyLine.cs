@@ -4,14 +4,18 @@ using UnityEngine;
 
 public class EnemyLine : EnemyBase
 {
+    //To attach AudioClip
+    [SerializeField]
+    private AudioClip Shooting;
+
+
     private Vector2 movementDirection;
     private Vector2 movementPerSecond;
 
     [SerializeField]
     private GameObject projectile;
 
-    [SerializeField]
-    private AudioClip Shooting;
+
 
     [SerializeField]
     public float shootTime = 1f;
@@ -21,8 +25,11 @@ public class EnemyLine : EnemyBase
     // Start is called before the first frame update
     new void Start()
     {
+
         base.Start();
+
         shootTime  *= (1f - (gameController.speedMultiplier * 0.1f));
+
         calcuateNewMovementVector(Bounds.MaxX);
     }
 
@@ -66,8 +73,12 @@ public class EnemyLine : EnemyBase
 
     void Shoot()
     {
+        //Play the audioclip found in the "Shooting" AudioSource
         audioProperties.PlayOneShot(Shooting);
+
+
         EnemyProjectile projectile4 = Instantiate(projectile, transform.position, Quaternion.identity).GetComponent<EnemyProjectile>();
+        
         projectile4.Shoot(Vector2.down);
     }
 }

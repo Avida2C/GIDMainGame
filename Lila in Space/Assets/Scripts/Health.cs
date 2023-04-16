@@ -49,7 +49,7 @@ public class Health : MonoBehaviour
 
     /// <summary>
     /// Decrement the HP of the entity. Will trigger a HealthIsZero event when
-    /// current HP reaches 0.
+    /// current HP reaches 0
     /// </summary>
     public void Decrement()
     {

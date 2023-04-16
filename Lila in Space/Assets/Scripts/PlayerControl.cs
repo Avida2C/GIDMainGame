@@ -43,14 +43,18 @@ public class PlayerControl : MonoBehaviour
 
     private List<PowerupBase> powerups;
 
-    private TMPro.TMP_Text scoreAmount;
 
     [HideInInspector]
     public int points = 0;
 
-    //Audio
-    private AudioSource audioProperties;
 
+
+
+    private TMPro.TMP_Text scoreAmount;
+
+    //AudioSource will allow AudioClips to play
+    private AudioSource audioProperties;
+    //To attach AudioClip
     [SerializeField]
     private AudioClip Hit;
 
@@ -68,18 +72,14 @@ public class PlayerControl : MonoBehaviour
 
     private void Awake()
     {
+        //Get the audioSource Component with the tag "audioSource" 
         audioProperties = GameObject.FindWithTag("audioSource").GetComponent<AudioSource>();
+
         body = GetComponent<Rigidbody2D>();
         health = GetComponent<Health>();
         sprite = GetComponent<SpriteRenderer>();
         powerups = new List<PowerupBase>();
         scoreAmount = GameObject.FindGameObjectWithTag("Score").GetComponent<TMPro.TMP_Text>();
-        
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
         
     }
 
@@ -89,21 +89,24 @@ public class PlayerControl : MonoBehaviour
         //Player Movement
         move.x = Input.GetAxis("Horizontal");
         move.y = Input.GetAxis("Vertical");
+        
         targetVelocity = Vector2.zero;
+        
         ComputeVelocity();
+        
         if (Input.GetButtonDown("Jump"))
         {
             //Projectile 
             fire();
         }
+        
         if (this.invincible)
         {
             sprite.material.SetColor("_Color", HSBColor.ToColor(new HSBColor(Mathf.PingPong(Time.time * 2, 1), 1, 1)));
         }
 
-        scoreAmount.text = points.ToString();
 
-       
+        scoreAmount.text = points.ToString();
     }
 
     void fire()
@@ -244,13 +247,16 @@ public class PlayerControl : MonoBehaviour
 
             if (health.IsDead())
             {
+                //Play the audioclip found in the "Dead" AudioSource
                 audioProperties.PlayOneShot(Dead);
+                
                 SaveHighScores();
                 GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>().ShowGameOver(points.ToString());
                 Destroy(gameObject);
             }
             else
             {
+                //Play the audioclip found in the "Hit" AudioSource
                 audioProperties.PlayOneShot(Hit);
             }
         }

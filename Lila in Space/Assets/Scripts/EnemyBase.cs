@@ -27,11 +27,13 @@ public class EnemyBase : MonoBehaviour
     [SerializeField]
     private GameObject powerupHealth;
 
+    //AudioSource to enable audioclips
     [HideInInspector]
-    public AudioSource audioProperties; 
-
+    public AudioSource audioProperties;
+    //To attach AudioClip
     [SerializeField]
     private AudioClip Dead;
+
 
     [HideInInspector]
     public GameController gameController;
@@ -55,7 +57,9 @@ public class EnemyBase : MonoBehaviour
     // Start is called before the first frame update
     public void Start()
     {
+        //Get the audioSource Component with the tag "audioSource" 
         audioProperties = GameObject.FindWithTag("audioSource").GetComponent<AudioSource>();
+
         sprite = GetComponent<SpriteRenderer>();
         health = GetComponent<Health>();
         player = GameObject.Find("Player").GetComponent<PlayerControl>();
@@ -63,16 +67,12 @@ public class EnemyBase : MonoBehaviour
         health.MaximumHealth = 1;
         enemyVelocity += gameController.speedMultiplier;
         
+        
         colliderOnSpawn = GetComponent<BoxCollider2D>();
         colliderOnSpawn.enabled = false;
         Invoke("EnableHitBox", 0.5f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public virtual void OnTriggerEnter2D(Collider2D collider)
     {
@@ -81,7 +81,9 @@ public class EnemyBase : MonoBehaviour
             this.health.Decrement();
             if (this.health.IsDead())
             {
+                //Play the audioclip found in the "Dead" AudioSource
                 audioProperties.PlayOneShot(Dead);
+
                 this.Drops();
                 player.AddKill();
                 Instantiate(DeathParticleSystem, transform.position, Quaternion.identity);
@@ -131,6 +133,7 @@ public class EnemyBase : MonoBehaviour
         MinY,
         MaxY
     }
+
 
     public void EnableHitBox()
     {
