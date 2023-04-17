@@ -80,10 +80,10 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 34.1, y: 12.038232}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!50 &2034578025739343396
@@ -137,7 +137,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxSpeed: 7
   projectileSource: {fileID: 0}
-  projectile: {fileID: 2716074592967527331, guid: b77fd3f835efa4a4ebe6a1188f677c6b, type: 3}
+  projectile: {fileID: 2119148105117311782, guid: dadd8e9ea74c4da4ea3555539dd32eba, type: 3}
   invulnerableTime: 2
   healthPowerupPoints: 20
   killPoints: 5
@@ -160,4 +160,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   MaximumHealth: 3
   currentHealth: 0
-  healthUI: {fileID: 6995216387021783379, guid: 1406cb1a37fe6ba4c883b36c614d694f, type: 3}

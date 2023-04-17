@@ -1,7 +1,19 @@
 fileFormatVersion: 2
-guid: b5302382b5a8cf741a9f9d2ae3a7981a
+guid: 4d77b923542f2514085e2c24df13df79
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 7355924345542590319
+    second: HealthPowerUp_0
+  - first:
+      213: -2084322436220679862
+    second: HealthPowerUp_1
+  - first:
+      213: 8748914010642125415
+    second: HealthPowerUp_2
+  - first:
+      213: 684294822246190664
+    second: HealthPowerUp_3
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -41,12 +53,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
-  spriteExtrude: 1
+  spriteMode: 2
+  spriteExtrude: 0
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 500
+  spritePixelsToUnits: 250
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,7 +114,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: HealthPowerUp_0
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 2479
+        width: 376
+        height: 438
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6fb6ba083e751660800000000000000
+      internalID: 7355924345542590319
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthPowerUp_1
+      rect:
+        serializedVersion: 2
+        x: 1657
+        y: 2442
+        width: 402
+        height: 475
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4980b799cff213e0800000000000000
+      internalID: -2084322436220679862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthPowerUp_2
+      rect:
+        serializedVersion: 2
+        x: 2831
+        y: 2462
+        width: 424
+        height: 455
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76213ce50f26a6970800000000000000
+      internalID: 8748914010642125415
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthPowerUp_3
+      rect:
+        serializedVersion: 2
+        x: 440
+        y: 609
+        width: 392
+        height: 508
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 84e8f99e38a1f7900800000000000000
+      internalID: 684294822246190664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

@@ -1,7 +1,19 @@
 fileFormatVersion: 2
-guid: 17409fad936b66c44b0d9426d149cb26
+guid: c05b7b8218204ef4da031c1f81620aad
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: 3865882035770482241
+    second: ShootingEnemy_0
+  - first:
+      213: 5320897166697347049
+    second: ShootingEnemy_1
+  - first:
+      213: -2456691542158089663
+    second: ShootingEnemy_2
+  - first:
+      213: 3206793211867907110
+    second: ShootingEnemy_3
   externalObjects: {}
   serializedVersion: 12
   mipmaps:
@@ -41,12 +53,12 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 1
-  spriteExtrude: 1
+  spriteMode: 2
+  spriteExtrude: 0
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 500
+  spritePixelsToUnits: 200
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -102,7 +114,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: ShootingEnemy_0
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 592
+        width: 532
+        height: 557
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14ed9adaa3f56a530800000000000000
+      internalID: 3865882035770482241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootingEnemy_1
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 592
+        width: 532
+        height: 557
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9e7b06328cf97d940800000000000000
+      internalID: 5320897166697347049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootingEnemy_2
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 6
+        width: 532
+        height: 557
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 142e5fafe0418edd0800000000000000
+      internalID: -2456691542158089663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ShootingEnemy_3
+      rect:
+        serializedVersion: 2
+        x: 620
+        y: 6
+        width: 532
+        height: 557
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 62445859f61d08c20800000000000000
+      internalID: 3206793211867907110
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []

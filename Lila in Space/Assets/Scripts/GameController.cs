@@ -1,10 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Experimental.Rendering.Universal;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
+    [SerializeField]
+    private Light2D globalLight;
+
     [SerializeField]
     private GameObject gameOver;
 
@@ -27,12 +31,21 @@ public class GameController : MonoBehaviour
     {
         //the gameOver menu is disabled
         gameOver.SetActive(false);
+        
+        globalLight.gameObject.SetActive(false);
+        Invoke("enableLight", 0.3f);
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         
+    }
+
+    private void enableLight()
+    {
+        globalLight.gameObject.SetActive(true);
     }
 
     private void FixedUpdate()
