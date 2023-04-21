@@ -35,6 +35,8 @@ public class EnemySpawn : MonoBehaviour
 
     public GameObject EnemyFollow;
 
+    public GameObject EnemyFast;
+
     //Player game object
     private GameObject player;
 
@@ -69,8 +71,15 @@ public class EnemySpawn : MonoBehaviour
                 float y = Random.Range(boundsLowY, boundsHighY);
                 
                 //Enemies spawn depending on the random generated enemy
-                int rngRand = Random.Range(1, 11);
+                int rngRand = Random.Range(1, 21);
 
+                if (rngRand == 3)
+                {
+                    //spawn enemy random
+                    Instantiate(EnemyFast, new Vector2(x, y), Quaternion.identity);
+                    return;
+                }
+                rngRand = Random.Range(1, 11);
                 if (rngRand == 5)
                 {
                     //spawn enemy random

@@ -2870,6 +2870,7 @@ MonoBehaviour:
   EnemyRand: {fileID: 1798439592721528692, guid: f10e22b065d1d31438fc5111632ab4e0, type: 3}
   EnemyLine: {fileID: 7649692029028810152, guid: 7b177014610d997418f3352ad042a16f, type: 3}
   EnemyFollow: {fileID: 6637427975913952551, guid: 31a9090c15c3e8c48b8b7fc7bb38dd14, type: 3}
+  EnemyFast: {fileID: 4571699302201996333, guid: 5d22cf2088dc686408bf02b93c1d794f, type: 3}
 --- !u!4 &1571406321
 Transform:
   m_ObjectHideFlags: 0

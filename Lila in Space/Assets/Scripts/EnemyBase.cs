@@ -87,9 +87,8 @@ public class EnemyBase : MonoBehaviour
         
         //Box collider is disabled
         colliderOnSpawn = GetComponent<BoxCollider2D>();
-        colliderOnSpawn.enabled = false;
         //The box collider is enabled after 0.5 seconds
-        Invoke("EnableHitBox", 0.5f);
+        Invoke("EnableHitBox", 0.8f);
     }
 
 
