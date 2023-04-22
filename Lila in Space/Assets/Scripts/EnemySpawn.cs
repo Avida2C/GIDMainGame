@@ -25,8 +25,8 @@ public class EnemySpawn : MonoBehaviour
     //Boundaries where enemies can spawn
     private float boundsLowX = -9f;
     private float boundsHighX = 9f;
-    private float boundsLowY = -2f;
-    private float boundsHighY = 4.2f;
+    private float boundsLowY = 0f;
+    private float boundsHighY = 4.0f;
 
     //Enemy game object types
     public GameObject EnemyRand;

@@ -1291,7 +1291,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d4c347c4251684eb8344381ac25063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 5
   resetPosition: -14
 --- !u!1 &716583652
 GameObject:
@@ -2850,7 +2850,7 @@ MonoBehaviour:
   gameOver: {fileID: 733795321}
   panel: {fileID: 1003758765}
   scoreText: {fileID: 1037131736}
-  speedUpInterval: 120
+  speedUpInterval: 90
   speedMultiplier: 1
 --- !u!114 &1571406320
 MonoBehaviour:
@@ -3355,7 +3355,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8d4c347c4251684eb8344381ac25063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 1
+  speed: 5
   resetPosition: -14
 --- !u!1001 &1703967263
 PrefabInstance:
