@@ -29,35 +29,45 @@ public class EnemyRandom : EnemyBase
         base.Start();
         //enemy colour set to level 1
         sprite.color = level1;
+
+        //Start movement
+        if (transform.position.x > boundsHighX)
+            calcuateNewMovementVectorStart(Bounds.MaxX);
+        else
+            calcuateNewMovementVectorStart(Bounds.MinX);
+
     }
 
     // Update is called once per frame
     void Update()
-    {   
-        //check if enemies reached one of the boundaries
-        if (transform.position.x >= boundsHighX)
+    {
+        if (!newSpawn)
         {
-            calcuateNewMovementVectorBounds(Bounds.MaxX);
-        }
-        else if (transform.position.x <= boundsLowX)
-        {
-            calcuateNewMovementVectorBounds(Bounds.MinX);
-        }
-        else if (transform.position.y >= boundsHighY)
-        {
-            calcuateNewMovementVectorBounds(Bounds.MaxY);
-        }
-        else if (transform.position.y <= boundsLowY)
-        {
-            calcuateNewMovementVectorBounds(Bounds.MinY);
-        }
-        //if time minus latestDirectionChangeTime is greater than directionChangeTime
-        else if (Time.time - latestDirectionChangeTime > directionChangeTime)
-        {
-            //set latestDirectionChangeTime to current time
-            latestDirectionChangeTime = Time.time;
-            //calculate new movement
-            calcuateNewMovementVector();
+            //check if enemies reached one of the boundaries
+            if (transform.position.x >= boundsHighX)
+            {
+                calcuateNewMovementVectorBounds(Bounds.MaxX);
+            }
+            else if (transform.position.x <= boundsLowX)
+            {
+                calcuateNewMovementVectorBounds(Bounds.MinX);
+            }
+            else if (transform.position.y >= boundsHighY)
+            {
+                calcuateNewMovementVectorBounds(Bounds.MaxY);
+            }
+            else if (transform.position.y <= boundsLowY)
+            {
+                calcuateNewMovementVectorBounds(Bounds.MinY);
+            }
+            //if time minus latestDirectionChangeTime is greater than directionChangeTime
+            else if (Time.time - latestDirectionChangeTime > directionChangeTime)
+            {
+                //set latestDirectionChangeTime to current time
+                latestDirectionChangeTime = Time.time;
+                //calculate new movement
+                calcuateNewMovementVector();
+            }
         }
         //Change position and movement
         transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
@@ -161,5 +171,21 @@ public class EnemyRandom : EnemyBase
         base.OnTriggerEnter2D(collision);
         //Set colour
         this.SetColor();
+    }
+
+    void calcuateNewMovementVectorStart(Bounds bounds)
+    {
+        //if enemy reaches maximum X, set movement direction to left
+        if (bounds == Bounds.MaxX)
+        {
+            movementDirection = new Vector2(-1, -0.05f);
+        }
+        //if enemy reaches minimum X, set movement direction to right
+        else
+        {
+            movementDirection = new Vector2(1, -0.05f);
+        }
+        //Calculate movement speed
+        movementPerSecond = movementDirection * enemyVelocity;
     }
 }

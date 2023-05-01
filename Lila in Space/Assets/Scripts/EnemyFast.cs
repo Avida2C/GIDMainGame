@@ -48,13 +48,9 @@ public class EnemyFast : EnemyBase
 
         //Start movement
         if (transform.position.x > boundsHighX)
-        {
-            calcuateNewMovementVectorBounds(Bounds.MaxX);
-        }
+            calcuateNewMovementVectorStart(Bounds.MaxX);
         else
-        {
-            calcuateNewMovementVectorBounds(Bounds.MinX);
-        }
+            calcuateNewMovementVectorStart(Bounds.MinX);
     }
 
     // Update is called once per frame
@@ -106,6 +102,22 @@ public class EnemyFast : EnemyBase
         //Change position and movement
         transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
         transform.position.y + (movementPerSecond.y * Time.deltaTime));
+    }
+
+    void calcuateNewMovementVectorStart(Bounds bounds)
+    {
+        //if enemy reaches maximum X, set movement direction to left
+        if (bounds == Bounds.MaxX)
+        {
+            movementDirection = new Vector2(-1, -0.05f);
+        }
+        //if enemy reaches minimum X, set movement direction to right
+        else
+        {
+            movementDirection = new Vector2(1, -0.05f);
+        }
+        //Calculate movement speed
+        movementPerSecond = movementDirection * enemyVelocity;
     }
 
     void Shoot()
