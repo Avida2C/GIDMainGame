@@ -62,6 +62,10 @@ public class EnemyBase : MonoBehaviour
     [HideInInspector]
     public PlayerControl player;
 
+    //Enemy not in playing area
+    [HideInInspector]
+    public bool newSpawn = true;
+
     // Start is called before the first frame update
     public void Start()
     {
@@ -82,8 +86,7 @@ public class EnemyBase : MonoBehaviour
 
         //Maximum health of the enemy is set to 1
         health.MaximumHealth = 1;
-        //Increases the base enemy speed depending on the speedMultiplier from the gameController
-        enemyVelocity += gameController.speedMultiplier;
+
         
         //Box collider is disabled
         colliderOnSpawn = GetComponent<BoxCollider2D>();
@@ -124,6 +127,10 @@ public class EnemyBase : MonoBehaviour
         {
             //Enemy is destroyed
             Destroy(gameObject);
+        }
+        else if (collider.tag == "Boundary")
+        {
+            this.newSpawn = false;
         }
     }
     /// <summary>

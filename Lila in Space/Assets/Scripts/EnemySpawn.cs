@@ -4,6 +4,11 @@ using UnityEngine;
 
 public class EnemySpawn : MonoBehaviour
 {
+
+    //amount of enemies that can spawn
+    [SerializeField]
+    private int enemyLimit = 10;
+
     //elapse time since last enemy spawn
     private float elapsedTime;
     
@@ -23,8 +28,6 @@ public class EnemySpawn : MonoBehaviour
     private float speedUpIntervalElapsed;
 
     //Boundaries where enemies can spawn
-    private float boundsLowX = -9f;
-    private float boundsHighX = 9f;
     private float boundsLowY = 0f;
     private float boundsHighY = 4.0f;
 
@@ -39,6 +42,9 @@ public class EnemySpawn : MonoBehaviour
 
     //Player game object
     private GameObject player;
+
+    //Sorting Layer to reduce glitching sprites
+    private int layer;
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +62,7 @@ public class EnemySpawn : MonoBehaviour
     private void FixedUpdate()
     {
         //if the player is not destored and there are less than 20 enemies
-        if (GameObject.FindGameObjectsWithTag("Enemy").Length < 20 && player != null)
+        if (GameObject.FindGameObjectsWithTag("Enemy").Length < enemyLimit && player != null)
         {
             //increase the elapsed time with the delta time
             elapsedTime += Time.deltaTime;
@@ -66,35 +72,53 @@ public class EnemySpawn : MonoBehaviour
             {
                 //reset elapsed time
                 elapsedTime = 0;
-                //get a random location in X and Y
-                float x = Random.Range(boundsLowX, boundsHighX);
+                //get a random location in Y
+                int randx = Random.Range(1, 3);
+                float x = -10f;
+                if (randx == 1)
+                {
+                    x = 10f;
+                }
                 float y = Random.Range(boundsLowY, boundsHighY);
                 
                 //Enemies spawn depending on the random generated enemy
                 int rngRand = Random.Range(1, 21);
+                GameObject enemy;
 
                 if (rngRand == 3)
                 {
                     //spawn enemy random
-                    Instantiate(EnemyFast, new Vector2(x, y), Quaternion.identity);
+                    enemy = Instantiate(EnemyFast, new Vector2(x, y), Quaternion.identity);
+                    enemy.GetComponent<SpriteRenderer>().sortingOrder = layer;
+                    layer--;
                     return;
                 }
                 rngRand = Random.Range(1, 11);
                 if (rngRand == 5)
                 {
                     //spawn enemy random
-                    Instantiate(EnemyRand, new Vector2(x, y), Quaternion.identity);
+                    enemy = Instantiate(EnemyRand, new Vector2(x, y), Quaternion.identity);
+                    enemy.GetComponent<SpriteRenderer>().sortingOrder = layer;
+                    layer--;
                     return;
                 }
                
                 rngRand = Random.Range(1, 6);
-                if(rngRand == 3)
+                if (rngRand == 3)
+                {
                     //spawn enemy follow
-                    Instantiate(EnemyFollow, new Vector2(x, y), Quaternion.identity);
+                    enemy = Instantiate(EnemyFollow, new Vector2(x, y), Quaternion.identity);
+                }
                 else
+                {
+                    y = boundsHighY;
                     //spawn enemy line
-                    Instantiate(EnemyLine, new Vector2(x, y), Quaternion.identity);
+                    enemy = Instantiate(EnemyLine, new Vector2(x, y), Quaternion.identity);
+                }
+                enemy.GetComponent<SpriteRenderer>().sortingOrder = layer;
+                layer--;
             }
+        
         }
         //if the speedUpIntervalElapsed is greater than speedUpInterval
         if(speedUpIntervalElapsed > speedUpInterval)

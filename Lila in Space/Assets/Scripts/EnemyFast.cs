@@ -42,11 +42,19 @@ public class EnemyFast : EnemyBase
     {
         //Calling the Start Method in EnemyBase
         base.Start();
-        //Calculate the shoot time depending on the speedMultiplier
-        shootTime *= (1f - (gameController.speedMultiplier * 0.1f));
 
         //enemy colour set to level 1
         sprite.color = level1;
+
+        //Start movement
+        if (transform.position.x > boundsHighX)
+        {
+            calcuateNewMovementVectorBounds(Bounds.MaxX);
+        }
+        else
+        {
+            calcuateNewMovementVectorBounds(Bounds.MinX);
+        }
     }
 
     // Update is called once per frame
@@ -67,35 +75,37 @@ public class EnemyFast : EnemyBase
         }
 
         //check if enemies reached one of the boundaries
-        if (transform.position.x >= boundsHighX)
+        if (!newSpawn)
         {
-            calcuateNewMovementVectorBounds(Bounds.MaxX);
-        }
-        else if (transform.position.x <= boundsLowX)
-        {
-            calcuateNewMovementVectorBounds(Bounds.MinX);
-        }
-        else if (transform.position.y >= boundsHighY)
-        {
-            calcuateNewMovementVectorBounds(Bounds.MaxY);
-        }
-        else if (transform.position.y <= boundsLowY)
-        {
-            calcuateNewMovementVectorBounds(Bounds.MinY);
-        }
-        //if time minus latestDirectionChangeTime is greater than directionChangeTime
-        else if (Time.time - latestDirectionChangeTime > directionChangeTime)
-        {
-            //set latestDirectionChangeTime to current time
-            latestDirectionChangeTime = Time.time;
-            //calculate new movement
-            calcuateNewMovementVector();
+            //check if enemies reached one of the boundaries
+            if (transform.position.x >= boundsHighX)
+            {
+                calcuateNewMovementVectorBounds(Bounds.MaxX);
+            }
+            else if (transform.position.x <= boundsLowX)
+            {
+                calcuateNewMovementVectorBounds(Bounds.MinX);
+            }
+            else if (transform.position.y >= boundsHighY)
+            {
+                calcuateNewMovementVectorBounds(Bounds.MaxY);
+            }
+            else if (transform.position.y <= boundsLowY)
+            {
+                calcuateNewMovementVectorBounds(Bounds.MinY);
+            }
+            //if time minus latestDirectionChangeTime is greater than directionChangeTime
+            else if (Time.time - latestDirectionChangeTime > directionChangeTime)
+            {
+                //set latestDirectionChangeTime to current time
+                latestDirectionChangeTime = Time.time;
+                //calculate new movement
+                calcuateNewMovementVector();
+            }
         }
         //Change position and movement
         transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
         transform.position.y + (movementPerSecond.y * Time.deltaTime));
-
-
     }
 
     void Shoot()

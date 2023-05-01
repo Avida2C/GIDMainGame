@@ -18,13 +18,6 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private GameObject scoreText;
 
-    [SerializeField]
-    private float speedUpInterval;
-
-    private float speedUpIntervalElapsed;
-
-    [HideInInspector]
-    public float speedMultiplier = 1f;
 
     // Start is called before the first frame update
     void Start()
@@ -50,26 +43,7 @@ public class GameController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (speedUpIntervalElapsed > speedUpInterval)
-        {
-            GameObject[] enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            foreach (GameObject enemy in enemies)
-            {
-                EnemyBase enemyComponent = enemy.GetComponent<EnemyBase>();
-                enemyComponent.enemyVelocity += 1f;
-                enemyComponent = enemy.GetComponent<EnemyLine>();
-                if (enemyComponent != null)
-                {
-                    (enemyComponent as EnemyLine).shootTime *= (1f - (speedMultiplier * 0.1f));
-                }
-            }
-            speedMultiplier += 1f;
-            speedUpIntervalElapsed = 0;
-        }
-        else
-        {
-            speedUpIntervalElapsed += Time.deltaTime;
-        }
+
     }
 
     /// <summary>

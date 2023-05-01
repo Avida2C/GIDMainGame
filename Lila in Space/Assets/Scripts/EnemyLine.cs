@@ -28,27 +28,33 @@ public class EnemyLine : EnemyBase
     {
         //Calling the Start Method in EnemyBase
         base.Start();
-        //Calculate the shoot time depending on the speedMultiplier
-        shootTime  *= (1f - (gameController.speedMultiplier * 0.1f));
+
         //Start movement
-        calcuateNewMovementVector(Bounds.MaxX);
+        if (transform.position.x > boundsHighX)
+            calcuateNewMovementVector(Bounds.MaxX);
+        else
+            calcuateNewMovementVector(Bounds.MinX);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if the enemy reaches maximum X boundary
-        if (transform.position.x >= boundsHighX)
+        if (!newSpawn)
         {
-            //calculate movement from right to left
-            calcuateNewMovementVector(Bounds.MaxX);
+            //if the enemy reaches maximum X boundary
+            if (transform.position.x >= boundsHighX)
+            {
+                //calculate movement from right to left
+                calcuateNewMovementVector(Bounds.MaxX);
+            }
+            //if the enemy reached the minimum X boundary
+            else if (transform.position.x <= boundsLowX)
+            {
+                //calculate movement from left to right
+                calcuateNewMovementVector(Bounds.MinX);
+            }
         }
-        //if the enemy reached the minimum X boundary
-        else if (transform.position.x <= boundsLowX)
-        {
-            //calculate movement from left to right
-            calcuateNewMovementVector(Bounds.MinX);
-        }
+        
         //enemy movement
         transform.position = new Vector2(transform.position.x + (movementPerSecond.x * Time.deltaTime),
         transform.position.y + (movementPerSecond.y * Time.deltaTime));
@@ -71,12 +77,12 @@ public class EnemyLine : EnemyBase
         //if enemy reaches maximum X, set movement direction to left
         if(bounds == Bounds.MaxX)
         {
-            movementDirection = Vector2.left;
+            movementDirection = new Vector2(-1, -0.05f);
         }
         //if enemy reaches minimum X, set movement direction to right
         else
         {
-            movementDirection = Vector2.right;
+            movementDirection = new Vector2(1, -0.05f);
         }
         //Calculate movement speed
         movementPerSecond = movementDirection * enemyVelocity;
