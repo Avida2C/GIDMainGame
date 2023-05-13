@@ -135,6 +135,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 235551484998651369, guid: 30658b7c5fafa3543b7b08edf7c61c72, type: 3}
+      propertyPath: PickUp
+      value: 
+      objectReference: {fileID: 8300000, guid: 24ec7d6eb8e485b4db415e7195e90230, type: 3}
+    - target: {fileID: 235551484998651369, guid: 30658b7c5fafa3543b7b08edf7c61c72, type: 3}
       propertyPath: projectileSource
       value: 
       objectReference: {fileID: 1143345905}
