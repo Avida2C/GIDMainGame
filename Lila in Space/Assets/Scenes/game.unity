@@ -2929,8 +2929,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   enemyLimit: 9999999
-  respawnTime: 3
-  speedUpInterval: 30
+  respawnTime: 5
+  speedUpInterval: 12
   respawnTimeReduction: 0.8
   EnemyRand: {fileID: 1798439592721528692, guid: f10e22b065d1d31438fc5111632ab4e0, type: 3}
   EnemyLine: {fileID: 7649692029028810152, guid: 7b177014610d997418f3352ad042a16f, type: 3}
@@ -2968,7 +2968,7 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 256
   DopplerLevel: 1
   MinDistance: 1
   MaxDistance: 500
@@ -3006,7 +3006,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

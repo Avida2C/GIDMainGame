@@ -135,10 +135,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9dc6c24587700bf4ab69c2f261b056a9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxSpeed: 7
+  maxSpeed: 5
   projectileSource: {fileID: 0}
   projectile: {fileID: 2119148105117311782, guid: dadd8e9ea74c4da4ea3555539dd32eba, type: 3}
-  invulnerableTime: 2
+  invulnerableTime: 3
   healthPowerupPoints: 20
   killPoints: 5
   points: 0

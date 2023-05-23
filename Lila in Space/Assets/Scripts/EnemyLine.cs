@@ -74,15 +74,17 @@ public class EnemyLine : EnemyBase
 
     void calcuateNewMovementVector(Bounds bounds)
     {
+
+
         //if enemy reaches maximum X, set movement direction to left
-        if(bounds == Bounds.MaxX)
+        if (bounds == Bounds.MaxX)
         {
-            movementDirection = new Vector2(-1, -0.05f);
+            movementDirection = new Vector2(-1, -0.080f);
         }
         //if enemy reaches minimum X, set movement direction to right
         else
         {
-            movementDirection = new Vector2(1, -0.05f);
+            movementDirection = new Vector2(1, -0.080f);
         }
         //Calculate movement speed
         movementPerSecond = movementDirection * enemyVelocity;

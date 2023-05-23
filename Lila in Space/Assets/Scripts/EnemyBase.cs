@@ -87,11 +87,6 @@ public class EnemyBase : MonoBehaviour
         //Maximum health of the enemy is set to 1
         health.MaximumHealth = 1;
 
-        
-        //Box collider is disabled
-        colliderOnSpawn = GetComponent<BoxCollider2D>();
-        //The box collider is enabled after 0.5 seconds
-        Invoke("EnableHitBox", 0.8f);
     }
 
 
@@ -140,28 +135,29 @@ public class EnemyBase : MonoBehaviour
     public void Drops()
     {
         //5%
-        int random = Random.Range(1, 20);
+        int random = Random.Range(1, 30);
         if (random == 4)
         {
+
             Instantiate(powerupNuke, transform.position, Quaternion.identity);
             return;
         }
         //7%
-        random = Random.Range(1, 15);
+        random = Random.Range(1, 20);
         if (random == 2)
         {
             Instantiate(powerupInvincible, transform.position, Quaternion.identity);
             return;
         }
         //25%
-        random = Random.Range(1, 5);
+        random = Random.Range(1, 10);
         if (random == 3)
         {
             Instantiate(powerUpShoot, transform.position, Quaternion.identity);
             return;
         }
         //10%
-        random = Random.Range(1, 11);
+        random = Random.Range(1, 40);
         if (random == 2)
         {
             Instantiate(powerupHealth, transform.position, Quaternion.identity);
@@ -179,12 +175,6 @@ public class EnemyBase : MonoBehaviour
         MaxY
     }
 
-
-    public void EnableHitBox()
-    {
-        //Box collider is enabled
-        colliderOnSpawn.enabled = true;
-    }
 
 
 }

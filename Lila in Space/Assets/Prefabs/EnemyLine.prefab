@@ -115,7 +115,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7649692029028810152}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -178,6 +178,7 @@ MonoBehaviour:
   boundsHighY: 4.8
   sprite: {fileID: 0}
   player: {fileID: 0}
+  newSpawn: 1
   Shooting: {fileID: 8300000, guid: 7783a7ec618ff144eb2fb0ec7d3ce6b3, type: 3}
   projectile: {fileID: 5863533478881491317, guid: 86951a209df363e4e82261689b518fcd, type: 3}
   shootTime: 1

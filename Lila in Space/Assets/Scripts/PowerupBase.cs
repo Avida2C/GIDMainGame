@@ -2,18 +2,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
 public class PowerupBase : MonoBehaviour
 {
+
+  
+
     // Start is called before the first frame update
     void Start()
     {
-        
+     
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+            
     }
     /// <summary>
     /// If the object with the tag "Player" collides with the powerup, the powerup gameobject is destroyed

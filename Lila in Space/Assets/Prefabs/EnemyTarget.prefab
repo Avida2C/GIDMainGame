@@ -115,7 +115,7 @@ BoxCollider2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6637427975913952551}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 1
@@ -178,6 +178,7 @@ MonoBehaviour:
   boundsHighY: 4.8
   sprite: {fileID: 0}
   player: {fileID: 0}
+  newSpawn: 1
 --- !u!95 &4772401174366649274
 Animator:
   serializedVersion: 5

@@ -124,6 +124,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b357faf885ad2ca41a036be8fd5f7de0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 2499250121225724343, guid: 30658b7c5fafa3543b7b08edf7c61c72, type: 3}
   DeathParticleSystem: {fileID: 5021958493395052799, guid: bccc9d3a90beb2641997e61f3fdce90d, type: 3}
   Nuke: {fileID: 8300000, guid: 778553515278de94ea01e5c4756a5ba4, type: 3}
 --- !u!95 &2025668455884306712
