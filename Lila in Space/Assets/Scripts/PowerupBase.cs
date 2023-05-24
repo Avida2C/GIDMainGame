@@ -29,7 +29,7 @@ public class PowerupBase : MonoBehaviour
     public void Update()
     {
         float playerDistance = Vector2.Distance(player.transform.position,transform.position); 
-        if (playerDistance < distance)
+         if (playerDistance < distance)
         {
             pickUpItem();
         }
