@@ -15,6 +15,7 @@ TagManager:
   - GameOver
   - GlobalLight
   - Boundary
+  - HowtoPlay
   layers:
   - Default
   - TransparentFX

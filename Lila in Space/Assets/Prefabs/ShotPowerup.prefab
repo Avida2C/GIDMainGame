@@ -124,7 +124,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4de6f1cd43936543809098c581314b4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2499250121225724343, guid: 30658b7c5fafa3543b7b08edf7c61c72, type: 3}
+  pickupDestroy: 10
+  speed: 10
+  distance: 2
 --- !u!95 &1803042287404850256
 Animator:
   serializedVersion: 5

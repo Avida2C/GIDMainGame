@@ -18,15 +18,25 @@ public class GameController : MonoBehaviour
     [SerializeField]
     private GameObject scoreText;
 
+    [SerializeField]
+    private GameObject howToPlay;
+
+    [SerializeField]
+    private GameObject player;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        SpriteRenderer playerSprite = player.GetComponent<SpriteRenderer>();
+        playerSprite.color = new Color(1, 1, 1, 0);
         //the gameOver menu is disabled
         gameOver.SetActive(false);
         
         globalLight.gameObject.SetActive(false);
-        Invoke("enableLight", 0.3f);
+        Invoke("enableLight", 0.35f);
+
+        Invoke("hideHowToPlay", 3f);
         
     }
 
@@ -39,6 +49,13 @@ public class GameController : MonoBehaviour
     private void enableLight()
     {
         globalLight.gameObject.SetActive(true);
+    }
+
+    private void hideHowToPlay()
+    {
+        howToPlay.SetActive(false);
+        SpriteRenderer playerSprite = player.GetComponent<SpriteRenderer>();
+        playerSprite.color = new Color(1, 1, 1, 1);
     }
 
     private void FixedUpdate()

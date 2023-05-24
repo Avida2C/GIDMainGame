@@ -16,6 +16,8 @@ public class PowerupNuke : PowerupBase
     // Start is called before the first frame update
     void Start()
     {
+        base.Start();
+       
         //Get the audioSource Component with the tag "audioSource" 
         audioProperties = GameObject.FindWithTag("audioSource").GetComponent<AudioSource>();
     }
@@ -23,7 +25,7 @@ public class PowerupNuke : PowerupBase
     // Update is called once per frame
     void Update()
     {
-        
+         base.Update();
     }
 
     new private void OnTriggerEnter2D(Collider2D collision)

@@ -111,7 +111,6 @@ public class EnemySpawn : MonoBehaviour
                 }
                 else
                 {
-                    y = boundsHighY;
                     //spawn enemy line
                     enemy = Instantiate(EnemyLine, new Vector2(x, y), Quaternion.identity);
                 }

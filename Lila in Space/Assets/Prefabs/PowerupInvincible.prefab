@@ -171,7 +171,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff11d76f297aa214580399743672d986, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 2499250121225724343, guid: 30658b7c5fafa3543b7b08edf7c61c72, type: 3}
+  pickupDestroy: 10
+  speed: 10
+  distance: 2
   powerupTime: 3
 --- !u!61 &7883715607971932079
 BoxCollider2D:
